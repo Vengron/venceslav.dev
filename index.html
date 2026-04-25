@@ -182,14 +182,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(24,18,15,0.08); }
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.55); font-weight: 400;
 }
-.hero-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
-.badge {
-  background: rgba(255,255,255,0.12); backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.85);
-  font-size: 0.67rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.3rem 0.75rem; font-weight: 500;
-}
 
 /* COMMON */
 section { padding: 7rem 3.5rem; }
@@ -246,7 +238,7 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 /* PHILOSOPHY STRIP */
 #philosophy {
   background: var(--ink); padding: 5rem 3.5rem;
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
 }
 .phil-card {
   background: rgba(255,255,255,0.03);
@@ -335,24 +327,19 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 .aud-n { font-family: var(--serif); font-size: 0.85rem; color: var(--red); min-width: 22px; }
 .aud-strong { color: var(--ink); display: block; margin-bottom: 0.1rem; font-weight: 500; }
 
-/* PROOF */
-#proof { background: var(--ink); color: var(--white); padding: 7rem 3.5rem; }
-.proof-top { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-bottom: 5rem; align-items: end; }
-#proof .h2 { color: var(--white); }
-#proof .sub { color: rgba(255,255,255,0.5); }
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,0.06); }
+/* STATS */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
 .stat-cell {
-  background: rgba(255,255,255,0.02); padding: 2.5rem 2rem;
-  border: 1px solid rgba(255,255,255,0.04);
+  background: var(--white); padding: 2.5rem 2rem;
   transition: background 0.2s;
 }
-.stat-cell:hover { background: rgba(255,255,255,0.06); }
+.stat-cell:hover { background: var(--cream); }
 .stat-num {
   font-family: var(--serif); font-size: 3.5rem; font-weight: 300;
-  color: var(--white); line-height: 1; margin-bottom: 0.3rem;
+  color: var(--ink); line-height: 1; margin-bottom: 0.3rem;
 }
 .stat-num span { color: var(--red); }
-.stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); font-weight: 500; }
+.stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; }
 
 /* PROCESS */
 #process { background: var(--cream); position: relative; overflow: hidden; }
@@ -370,17 +357,6 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 .step-title { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.4rem; }
 .step-desc { font-size: 0.87rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; }
 .process-right { padding-top: 6rem; }
-.process-quote-block {
-  background: var(--ink); padding: 3rem; margin-bottom: 2rem;
-}
-.process-quote {
-  font-family: var(--serif); font-size: 1.4rem; font-style: italic;
-  color: var(--white); line-height: 1.45; margin-bottom: 1rem;
-}
-.process-quote-attr {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500;
-}
 .deliverables-label {
   font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--red); font-weight: 500; margin-bottom: 1rem;
@@ -561,12 +537,6 @@ footer {
     <div class="hero-caption">
       <div class="hero-cap-name">Věnceslav Chumchal</div>
       <div class="hero-cap-role">AI Lab Head · Co-Founder · MSc Artificial Intelligence</div>
-      <div class="hero-badges">
-        <span class="badge">30+ AI Projects / yr</span>
-        <span class="badge">arXiv Published</span>
-        <span class="badge">NVIDIA DLI</span>
-        <span class="badge">Co-Founder</span>
-      </div>
     </div>
   </div>
 </section>
@@ -614,19 +584,13 @@ footer {
     <div class="phil-num">01</div>
     <span class="phil-icon">🍞</span>
     <div class="phil-title">Skills, Not Dependencies</div>
-    <p class="phil-desc">I teach you to bake. Most consultants sell you bread and keep the recipe. My goal is that after working with me, you can continue — and improve — without me.</p>
+    <p class="phil-desc">Most consultants create ongoing dependency — and like it that way. My goal is the opposite: every engagement ends with you owning the capability, the thinking, and the confidence to keep building without me.</p>
   </div>
   <div class="phil-card">
     <div class="phil-num">02</div>
     <span class="phil-icon">🏭</span>
     <div class="phil-title">Practitioner, Not Theorist</div>
     <p class="phil-desc">Everything I teach, I do. I lead an AI lab delivering real AI systems to industry clients. My advice is grounded in what actually works in production — not what sounds good in a presentation.</p>
-  </div>
-  <div class="phil-card">
-    <div class="phil-num">03</div>
-    <span class="phil-icon">🔍</span>
-    <div class="phil-title">Automate Before You're Automated</div>
-    <p class="phil-desc">Someone is right now working on automating your role. The question isn't whether to engage with AI — it's whether you'll be the one driving it, or the one displaced by it.</p>
   </div>
 </div>
 <hr class="div">
@@ -730,7 +694,7 @@ footer {
   </div>
   <div>
     <div class="eyebrow" style="margin-bottom:2rem;">Track Record</div>
-    <div class="stats-grid" style="background: var(--border);">
+    <div class="stats-grid">
       <div class="stat-cell">
         <div class="stat-num">30<span>+</span></div>
         <div class="stat-label">AI Projects Delivered / Year</div>
@@ -799,10 +763,6 @@ footer {
       </div>
     </div>
     <div class="process-right">
-      <div class="process-quote-block">
-        <div class="process-quote">"I teach how to make a bread, not selling a bread. Aka teaching you the skills needed to automate your job by yourself."</div>
-        <div class="process-quote-attr">— Věnceslav Chumchal</div>
-      </div>
       <div class="deliverables-label">What You'll Leave With</div>
       <ul class="deliverable-list">
         <li>A clear audit of where AI creates real value in your context</li>
@@ -816,31 +776,6 @@ footer {
 </section>
 <hr class="div">
 
-<!-- PROOF STRIP -->
-<section id="proof" style="padding: 7rem 3.5rem;">
-  <div class="proof-top">
-    <div>
-      <div class="eyebrow gold">Track Record</div>
-      <h2 class="h2" style="color:var(--white);">Delivered at scale. Across sectors.</h2>
-    </div>
-    <p class="sub" style="color:rgba(255,255,255,0.5);">Not a consultant who theorises about AI — an engineer who has shipped it for automotive, construction, chemical, and research clients.</p>
-  </div>
-  <div class="stats-grid">
-    <div class="stat-cell">
-      <div class="stat-num">30<span>+</span></div>
-      <div class="stat-label">AI Projects Delivered / Year at AI Lab</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Industry Sectors (Auto, Construction, Chemical)</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">2</div>
-      <div class="stat-label">EU Digital Europe / MŠMT Grants</div>
-    </div>
-  </div>
-</section>
-<hr class="div">
 
 <!-- PRICING -->
 <section id="pricing">
