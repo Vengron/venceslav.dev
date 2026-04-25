@@ -988,11 +988,34 @@ footer {
   </div>
 </footer>
 
+<!-- ============================================================
+     Vercel Analytics (replaces: import { Analytics } from "@vercel/analytics/next")
+     Tracks pageviews and web vitals automatically.
+     Vercel injects /_vercel/insights/script.js on deployment.
+============================================================ -->
 <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<!-- ============================================================
+     Vercel Speed Insights (replaces: import { SpeedInsights } from "@vercel/speed-insights/next")
+     Measures Core Web Vitals (LCP, FID, CLS, TTFB, INP) per route.
+     Vercel injects /_vercel/speed-insights/script.js on deployment.
+============================================================ -->
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<script>
+  // ── Nav scroll shadow ────────────────────────────────────────
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  // ── Mobile hamburger menu ────────────────────────────────────
   const btn = document.getElementById('hamburger');
   const menu = document.getElementById('mobileMenu');
   btn.addEventListener('click', () => {
@@ -1005,6 +1028,72 @@ footer {
     menu.classList.remove('open');
     document.body.style.overflow = '';
   }
+
+  // ── Custom Analytics Event Tracking ─────────────────────────
+  // Fires va() events so you can see them in the Vercel Analytics
+  // dashboard under "Custom Events". All non-blocking.
+
+  function trackEvent(name, props) {
+    try { va('event', Object.assign({ name: name }, props || {})); } catch(e) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // Track all CalendarBridge booking clicks (hero + contact card)
+    document.querySelectorAll('a[href*="calendarbridge.com"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        trackEvent('booking_click', {
+          source: el.closest('#hero') ? 'hero' : 'contact_card'
+        });
+      });
+    });
+
+    // Track "Book Now" pricing card clicks (scroll to contact)
+    document.querySelectorAll('#pricing .btn-primary').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var card = el.closest('.p-card');
+        var tier = card ? (card.querySelector('.p-name') || {}).textContent : 'unknown';
+        trackEvent('pricing_cta_click', { tier: (tier || '').trim() });
+      });
+    });
+
+    // Track "Explore Services" / "See How I Can Help" secondary CTA
+    document.querySelectorAll('a.btn-outline').forEach(function (el) {
+      el.addEventListener('click', function () {
+        trackEvent('secondary_cta_click', { label: el.textContent.trim() });
+      });
+    });
+
+    // Track nav link clicks (which section gets the most interest)
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function (el) {
+      el.addEventListener('click', function () {
+        trackEvent('nav_click', { label: el.textContent.trim() });
+      });
+    });
+
+    // Track contact channel clicks (email / WhatsApp / LinkedIn)
+    document.querySelectorAll('.c-row').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var label = (el.querySelector('.c-label') || {}).textContent || '';
+        trackEvent('contact_channel_click', { channel: label.trim() });
+      });
+    });
+
+    // Track scroll depth milestones (25 / 50 / 75 / 100%)
+    var depthFired = {};
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY + window.innerHeight;
+      var total = document.documentElement.scrollHeight;
+      var pct = Math.round((scrolled / total) * 100);
+      [25, 50, 75, 100].forEach(function (milestone) {
+        if (pct >= milestone && !depthFired[milestone]) {
+          depthFired[milestone] = true;
+          trackEvent('scroll_depth', { percent: milestone });
+        }
+      });
+    }, { passive: true });
+
+  });
 </script>
 </body>
 </html>
