@@ -19,7 +19,8 @@
 <meta name="twitter:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops in manufacturing, coding, and productivity. On-site engagements across the region." />
 <meta name="twitter:image" content="https://venceslav.tech/profile_foto.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
 <style>
 :root {
   --red: #B91C2E;
@@ -33,7 +34,7 @@
   --gold: #C4922A;
   --border: rgba(24,18,15,0.09);
   --sans: 'Outfit', sans-serif;
-  --serif: 'Cormorant Garamond', serif;
+  --serif: 'EB Garamond', serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -59,11 +60,12 @@ nav {
 nav.scrolled { box-shadow: 0 2px 24px rgba(24,18,15,0.08); }
 .nav-logo {
   font-family: var(--serif);
-  font-size: 1.2rem; font-weight: 600;
-  color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  font-size: 1.25rem; font-weight: 500;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.005em;
+  white-space: nowrap;
 }
-.nav-logo span { color: var(--red); }
-.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-logo span { color: var(--red); font-weight: 600; }
+.nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; }
 .nav-links a {
   text-decoration: none; color: var(--ink-muted);
   font-size: 0.8rem; font-weight: 500;
@@ -113,12 +115,16 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(24,18,15,0.08); }
 
 /* HERO */
 #hero {
-  min-height: 100vh; display: grid;
-  grid-template-columns: 55% 45%; padding-top: 72px;
+  min-height: 100vh; display: flex;
+  align-items: center; padding-top: 72px;
+  background:
+    radial-gradient(ellipse at top right, rgba(185,28,46,0.06), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(196,146,42,0.05), transparent 60%);
 }
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 5rem 4rem 5rem 3.5rem;
+  padding: 5rem 3.5rem; max-width: 1100px;
+  width: 100%; margin: 0 auto;
 }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.6rem;
@@ -129,19 +135,19 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(24,18,15,0.08); }
 .hero-name {
   font-family: var(--serif);
   font-size: clamp(3rem, 5.5vw, 5rem);
-  font-weight: 300; line-height: 1.0;
+  font-weight: 400; line-height: 1.0;
   letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.6rem;
 }
 .hero-name strong { font-weight: 600; }
 .hero-name em { font-style: italic; color: var(--red); }
 .hero-sub {
-  font-size: 1rem; color: var(--ink-muted);
-  max-width: 440px; line-height: 1.85; font-weight: 300; margin-bottom: 1.4rem;
+  font-size: 1.05rem; color: var(--ink-muted);
+  max-width: 620px; line-height: 1.85; font-weight: 300; margin-bottom: 1.4rem;
 }
 .hero-philosophy {
-  font-family: var(--serif); font-size: 1.1rem; font-style: italic;
+  font-family: var(--serif); font-size: 1.25rem; font-style: italic;
   color: var(--ink); border-left: 2px solid var(--red);
-  padding-left: 1.2rem; margin-bottom: 2.8rem; max-width: 400px; line-height: 1.5;
+  padding-left: 1.4rem; margin-bottom: 2.8rem; max-width: 560px; line-height: 1.5;
 }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 .btn-primary {
@@ -160,27 +166,19 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(24,18,15,0.08); }
   text-decoration: none; display: inline-block; transition: all 0.2s;
 }
 .btn-outline:hover { border-color: var(--red); color: var(--red); }
-.hero-right { position: relative; overflow: hidden; background: var(--ink); }
-.hero-photo {
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: center 20%; display: block;
-  opacity: 0.88; filter: grayscale(12%);
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 0.7rem 1.6rem;
+  margin-top: 2.4rem; padding-top: 1.8rem;
+  border-top: 1px solid var(--border); max-width: 700px;
 }
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 45%, rgba(24,18,15,0.72) 100%);
-  pointer-events: none;
+.hero-meta-item {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-muted); font-weight: 500;
+  display: inline-flex; align-items: center; gap: 0.55rem;
 }
-.hero-caption {
-  position: absolute; bottom: 2.5rem; left: 2.5rem; right: 2.5rem;
-}
-.hero-cap-name {
-  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
-  color: var(--white); line-height: 1.1; margin-bottom: 0.3rem;
-}
-.hero-cap-role {
-  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55); font-weight: 400;
+.hero-meta-item::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--red); border-radius: 50%;
 }
 
 /* COMMON */
@@ -205,6 +203,22 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
   font-size: 0.68rem; font-weight: 500;
   letter-spacing: 0.07em; text-transform: uppercase; padding: 0.3rem 0.8rem;
 }
+a.chip { text-decoration: none; transition: background 0.2s; }
+a.chip:hover { background: #efd5d9; }
+a.subtle {
+  color: inherit; text-decoration: underline;
+  text-decoration-style: dotted; text-underline-offset: 3px;
+  text-decoration-color: rgba(24,18,15,0.28);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+a.subtle:hover { color: var(--red); text-decoration-color: var(--red); }
+a.subtle-light {
+  color: inherit; text-decoration: underline;
+  text-decoration-style: dotted; text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.3);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+a.subtle-light:hover { color: rgba(255,255,255,0.9); text-decoration-color: rgba(255,255,255,0.7); }
 
 /* ABOUT */
 #about {
@@ -213,16 +227,16 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 }
 .about-quote {
   font-family: var(--serif); font-size: 1.55rem;
-  font-style: italic; font-weight: 300; line-height: 1.45;
+  font-style: italic; font-weight: 400; line-height: 1.45;
   border-left: 3px solid var(--red); padding-left: 1.8rem; margin-bottom: 2.5rem;
 }
 .about-body { color: var(--ink-muted); line-height: 1.9; font-size: 0.96rem; font-weight: 300; }
 .about-body p + p { margin-top: 1rem; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 2rem; }
-.about-img-wrap { position: relative; height: 560px; overflow: hidden; }
+.about-img-wrap { position: relative; overflow: hidden; }
 .about-img-wrap img {
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: center 20%; display: block; filter: grayscale(10%);
+  width: 100%; height: auto; display: block;
+  image-rendering: -webkit-optimize-contrast;
 }
 .about-img-deco {
   position: absolute; top: 1.5rem; right: 1.5rem;
@@ -238,27 +252,28 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 /* PHILOSOPHY STRIP */
 #philosophy {
   background: var(--ink); padding: 5rem 3.5rem;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
 }
 .phil-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 2.8rem 2.2rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2.6rem 2rem;
   position: relative; overflow: hidden;
   transition: background 0.3s;
 }
-.phil-card:hover { background: rgba(255,255,255,0.07); }
+.phil-card:hover { background: rgba(255,255,255,0.08); }
 .phil-num {
-  font-family: var(--serif); font-size: 5rem; font-weight: 300;
-  color: rgba(255,255,255,0.04); line-height: 1;
+  font-family: var(--serif); font-size: 5rem; font-weight: 400;
+  color: rgba(255,255,255,0.07); line-height: 1;
   position: absolute; top: 1rem; right: 1.5rem;
 }
 .phil-icon { font-size: 1.5rem; margin-bottom: 1.2rem; display: block; }
 .phil-title {
-  font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
-  color: var(--white); margin-bottom: 0.8rem; line-height: 1.2;
+  font-family: var(--serif); font-size: 1.35rem; font-weight: 500;
+  color: var(--white); margin-bottom: 0.9rem; line-height: 1.25;
+  letter-spacing: -0.01em;
 }
-.phil-desc { font-size: 0.87rem; color: rgba(255,255,255,0.5); line-height: 1.85; font-weight: 300; }
+.phil-desc { font-size: 0.92rem; color: rgba(255,255,255,0.78); line-height: 1.8; font-weight: 300; }
 
 /* SERVICES */
 #services { background: var(--cream); }
@@ -319,13 +334,18 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 }
 .aud-list { list-style: none; margin-top: 2.5rem; }
 .aud-list li {
-  padding: 1.2rem 0; border-bottom: 1px solid var(--border);
-  display: flex; gap: 1.4rem; align-items: flex-start;
-  font-size: 0.93rem; color: var(--ink-muted);
+  padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 64px 1fr; gap: 1.4rem;
+  align-items: start;
+  font-size: 0.95rem; color: var(--ink-muted); line-height: 1.7;
 }
 .aud-list li:first-child { border-top: 1px solid var(--border); }
-.aud-n { font-family: var(--serif); font-size: 0.85rem; color: var(--red); min-width: 22px; }
-.aud-strong { color: var(--ink); display: block; margin-bottom: 0.1rem; font-weight: 500; }
+.aud-n {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  color: var(--red); letter-spacing: 0.14em;
+  padding-top: 0.35rem; line-height: 1;
+}
+.aud-strong { color: var(--ink); display: block; margin-bottom: 0.25rem; font-weight: 500; font-size: 1rem; }
 
 /* STATS */
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
@@ -335,7 +355,7 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 }
 .stat-cell:hover { background: var(--cream); }
 .stat-num {
-  font-family: var(--serif); font-size: 3.5rem; font-weight: 300;
+  font-family: var(--serif); font-size: 3.5rem; font-weight: 400;
   color: var(--ink); line-height: 1; margin-bottom: 0.3rem;
 }
 .stat-num span { color: var(--red); }
@@ -353,7 +373,7 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
   border-bottom: 1px solid var(--border); padding: 2.2rem 0;
 }
 .step:first-child { border-top: 1px solid var(--border); }
-.step-n { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--red); line-height: 1; }
+.step-n { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--red); line-height: 1; }
 .step-title { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.4rem; }
 .step-desc { font-size: 0.87rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; }
 .process-right { padding-top: 6rem; }
@@ -376,8 +396,12 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 4rem; align-items: end; margin-bottom: 4rem;
 }
-.p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
-.p-card { background: var(--cream); padding: 2.8rem 2.2rem; position: relative; }
+.p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); align-items: stretch; }
+.p-card {
+  background: var(--cream); padding: 2.8rem 2.2rem;
+  position: relative; display: flex; flex-direction: column;
+}
+.p-card .btn-primary { margin-top: auto; align-self: stretch; text-align: center; }
 .p-card.feat { background: var(--red); }
 .p-card.feat .p-name { color: rgba(255,255,255,0.6); }
 .p-card.feat .p-price, .p-card.feat .p-period,
@@ -438,7 +462,7 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
 }
 .c-row:hover .c-icon { background: var(--red); border-color: var(--red); }
 .c-label { font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; margin-bottom: 0.2rem; }
-.c-val { font-family: var(--serif); font-size: 1.2rem; color: var(--white); font-weight: 300; }
+.c-val { font-family: var(--serif); font-size: 1.2rem; color: var(--white); font-weight: 400; }
 .c-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08); padding: 3rem;
@@ -466,17 +490,16 @@ footer {
 .hero-actions { animation: fadeUp 0.55s 0.36s ease both; }
 
 /* RESPONSIVE */
+@media (max-width: 1100px) {
+  #philosophy { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+}
 @media (max-width: 960px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  #hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 3rem 1.5rem 2rem; }
-  .hero-right { height: 420px; }
   #about, #audience, .contact-inner, .process-inner, .proof-top { grid-template-columns: 1fr; gap: 3rem; }
-  .about-img-wrap { height: 360px; }
   section { padding: 4rem 1.5rem; }
-  #philosophy { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
   .svc-top, .pricing-top { grid-template-columns: 1fr; gap: 2rem; }
   .svc-grid, .p-grid, .cred-grid, .stats-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 1rem; text-align: center; }
@@ -487,7 +510,7 @@ footer {
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a class="nav-logo" href="#">Věnceslav <span>C.</span></a>
+  <a class="nav-logo" href="#">Věnceslav <span>Chumchal</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -523,20 +546,17 @@ footer {
       <em>Real Results.</em>
     </h1>
     <p class="hero-sub">
-      I lead an EU AI lab delivering 30+ production AI projects a year — and I'm based in Asia, available on-site for manufacturing, coding, and productivity work. I bring in specialists from a network of researchers and developers when projects need them.
+      I lead an EU AI lab delivering 30+ projects a year — and I'm based in Asia, available on-site for manufacturing, coding, and productivity work. I bring in specialists from a network of researchers and developers when projects need them.
     </p>
-    <p class="hero-philosophy">"I teach you to bake, not sell you bread."</p>
+    <p class="hero-philosophy">"I teach you how to bake. I don't just sell you the loaf."</p>
     <div class="hero-actions">
       <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book a Free Discovery Call</a>
       <a href="#services" class="btn-outline">See How I Can Help</a>
     </div>
-  </div>
-  <div class="hero-right">
-    <img src="profile_foto.jpg" alt="Věnceslav Chumchal" class="hero-photo" />
-    <div class="hero-overlay"></div>
-    <div class="hero-caption">
-      <div class="hero-cap-name">Věnceslav Chumchal</div>
-      <div class="hero-cap-role">AI Lab Head · Manufacturing-AI Specialist · EU AI Act / GDPR-Compliant</div>
+    <div class="hero-meta">
+      <span class="hero-meta-item"><a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">AI Lab Head · CXI / TU Liberec</a></span>
+      <span class="hero-meta-item">Manufacturing · Coding · Productivity</span>
+      <span class="hero-meta-item">EU AI Act / GDPR-Compliant</span>
     </div>
   </div>
 </section>
@@ -551,17 +571,17 @@ footer {
       "The best AI advice comes from someone who has actually built and shipped AI systems."
     </blockquote>
     <div class="about-body">
-      <p>I'm Věnceslav Chumchal. I lead the AI Lab at the Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec — a cross-functional team of 10–15 ML engineers, LLM specialists, and software engineers delivering 30+ applied AI projects a year, from research to production-grade software.</p>
-      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded IPF Industry, scaling it from zero to ~1M CZK/month revenue in under two years — fully self-financed, 100% owned.</p>
+      <p>I'm Věnceslav Chumchal. I lead the AI Lab at the <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec</a> — a cross-functional team of 10–15 ML engineers, LLM specialists, and software engineers delivering 30+ applied AI projects a year, from research to production-grade software.</p>
+      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="subtle">IPF Industry</a> — an international trade and manufacturing business dealing in real, physical goods across the EEA, Middle East, and India. Production schedules, customs, logistics, cross-border payments — the unglamorous reality behind every shipment. Fully self-financed, 100% owned.</p>
       <p>I work at the intersection of deep technical execution and strategic clarity. When I consult, I don't hand you a slide deck and disappear — I transfer the skills and thinking so you can keep building after I'm gone.</p>
       <p>I'm based in Southeast Asia — close enough to be on your factory floor next week, with the EU credentials and EU AI Act / GDPR delivery practices that international clients require. For larger engagements I bring in specialists from a trusted network of ML researchers and engineers.</p>
-      <p>Currently pursuing an MSc in Artificial Intelligence at Universität zu Lübeck while working full-time. Curiosity doesn't wait.</p>
+      <p>Currently pursuing an MSc in Artificial Intelligence at Universität zu Lübeck while working. Curiosity doesn't wait.</p>
     </div>
     <div class="chip-row">
       <span class="chip">Based in Asia · EU-Expert</span>
       <span class="chip">EU AI Act / GDPR</span>
-      <span class="chip">AI Lab Head · CXI / TU Liberec</span>
-      <span class="chip">Co-Founder · IPF Industry</span>
+      <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="chip">AI Lab Head · CXI / TU Liberec</a>
+      <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="chip">Co-Founder · IPF Industry</a>
       <span class="chip">MSc AI · Univ. Lübeck</span>
       <span class="chip">arXiv Co-author</span>
       <span class="chip">NVIDIA DLI</span>
@@ -570,7 +590,7 @@ footer {
   </div>
   <div>
     <div class="about-img-wrap">
-      <img src="profile_foto.jpg" alt="Věnceslav Chumchal" />
+      <img src="profile_foto.jpg" alt="Věnceslav Chumchal" loading="lazy" decoding="async" />
       <div class="about-img-deco"></div>
       <div class="about-img-bar">
         <div class="about-bar-name">Věnceslav Chumchal</div>
@@ -594,6 +614,12 @@ footer {
     <span class="phil-icon">🏭</span>
     <div class="phil-title">Practitioner, Not Theorist</div>
     <p class="phil-desc">Everything I teach, I do. I lead an AI lab delivering real AI systems to industry clients. My advice is grounded in what actually works in production — not what sounds good in a presentation.</p>
+  </div>
+  <div class="phil-card">
+    <div class="phil-num">03</div>
+    <span class="phil-icon">🌏</span>
+    <div class="phil-title">EU Discipline, Asia Proximity</div>
+    <p class="phil-desc">European credentials and EU AI Act / GDPR-compliant delivery — combined with on-the-ground presence in Asia. Most consultants offer one or the other; international clients need both. I show up at your factory and bring the regulatory rigor with me.</p>
   </div>
 </div>
 <hr class="div">
@@ -679,20 +705,20 @@ footer {
     <p class="sub">On-site engagements across Asia and remote work elsewhere, conducted in English. A genuine interest in building capability — not just outsourcing a task.</p>
     <ul class="aud-list">
       <li>
-        <span class="aud-n">①</span>
-        <div><span class="aud-strong">Industrial & Manufacturing Businesses</span>SME owners and operations leads who want to know exactly where AI can cut costs, reduce defects, or improve throughput — with a trusted technical partner to execute it.</div>
+        <span class="aud-n">N°&nbsp;01</span>
+        <div><span class="aud-strong">Industrial &amp; Manufacturing Businesses</span>SME owners and operations leads who want to know exactly where AI can cut costs, reduce defects, or improve throughput — with a trusted technical partner to execute it.</div>
       </li>
       <li>
-        <span class="aud-n">②</span>
-        <div><span class="aud-strong">Software Developers & Engineers</span>Developers who want to move from "prompting AI" to building serious AI-powered systems and agentic workflows with proper engineering discipline.</div>
+        <span class="aud-n">N°&nbsp;02</span>
+        <div><span class="aud-strong">Software Developers &amp; Engineers</span>Developers who want to move from "prompting AI" to building serious AI-powered systems and agentic workflows with proper engineering discipline.</div>
       </li>
       <li>
-        <span class="aud-n">③</span>
-        <div><span class="aud-strong">Knowledge Workers & Professionals</span>People in roles that are changing fast — who want to identify what to automate, build the skills to do it themselves, and stay ahead of their field.</div>
+        <span class="aud-n">N°&nbsp;03</span>
+        <div><span class="aud-strong">Knowledge Workers &amp; Professionals</span>People in roles that are changing fast — who want to identify what to automate, build the skills to do it themselves, and stay ahead of their field.</div>
       </li>
       <li>
-        <span class="aud-n">④</span>
-        <div><span class="aud-strong">Entrepreneurs & Founders</span>Founders who need an honest technical voice on AI strategy — someone who has actually co-founded and scaled a company alongside an AI career.</div>
+        <span class="aud-n">N°&nbsp;04</span>
+        <div><span class="aud-strong">Entrepreneurs &amp; Founders</span>Founders who need an honest technical voice on AI strategy — someone who has actually co-founded and scaled a company alongside an AI career.</div>
       </li>
     </ul>
   </div>
@@ -848,20 +874,20 @@ footer {
     <div class="cred-grid">
       <div class="cred-card">
         <div class="cred-tag">Current Role</div>
-        <div class="cred-title">Head of AI Lab — Institute for Nanomaterials, Advanced Technologies &amp; Innovation</div>
+        <div class="cred-title"><a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">Head of AI Lab — Institute for Nanomaterials, Advanced Technologies &amp; Innovation</a></div>
         <div class="cred-sub">Leading 10–15 ML engineers and LLM specialists. 30+ projects/year across research and industry.</div>
         <div class="cred-year">Jan 2025 – Present</div>
       </div>
       <div class="cred-card">
         <div class="cred-tag">Co-Founder</div>
-        <div class="cred-title">IPF Industry s.r.o.</div>
-        <div class="cred-sub">Scaled from self-funded startup to ~1M CZK/month revenue in under 2 years. 100% ownership retained. EEA, Middle East, India markets.</div>
+        <div class="cred-title"><a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="subtle">IPF Industry s.r.o.</a></div>
+        <div class="cred-sub">International trade and manufacturing of physical goods — production, shipping, customs, cross-border markets. Fully self-financed, 100% ownership retained. EEA, Middle East, India.</div>
         <div class="cred-year">Sept 2023 – Present</div>
       </div>
       <div class="cred-card">
         <div class="cred-tag">Education</div>
         <div class="cred-title">MSc Artificial Intelligence — Universität zu Lübeck</div>
-        <div class="cred-sub">Pursuing alongside full-time AI Lab leadership. Previously Bc. Mathematics, TU Liberec.</div>
+        <div class="cred-sub">Pursuing alongside AI Lab leadership. Previously Bc. Mathematics, TU Liberec.</div>
         <div class="cred-year">March 2026 –</div>
       </div>
       <div class="cred-card">
