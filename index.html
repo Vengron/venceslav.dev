@@ -220,6 +220,11 @@ a.subtle-light {
 }
 a.subtle-light:hover { color: rgba(255,255,255,0.9); text-decoration-color: rgba(255,255,255,0.7); }
 
+/* FAQ */
+details[open] summary span {
+  transform: rotate(45deg);
+}
+
 /* ABOUT */
 #about {
   background: var(--white); display: grid;
@@ -499,6 +504,7 @@ footer {
   .hamburger { display: flex; }
   .hero-left { padding: 3rem 1.5rem 2rem; }
   #about, #audience, .contact-inner, .process-inner, .proof-top { grid-template-columns: 1fr; gap: 3rem; }
+  #not-for > div { grid-template-columns: 1fr !important; }
   section { padding: 4rem 1.5rem; }
   .svc-top, .pricing-top { grid-template-columns: 1fr; gap: 2rem; }
   .svc-grid, .p-grid, .cred-grid, .stats-grid { grid-template-columns: 1fr; }
@@ -514,6 +520,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
     <li><a href="#audience">Who It's For</a></li>
     <li><a href="#process">How It Works</a></li>
     <li><a href="#pricing">Pricing</a></li>
@@ -529,6 +536,7 @@ footer {
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#results" onclick="closeMenu()">Results</a>
   <a href="#audience" onclick="closeMenu()">Who It's For</a>
   <a href="#process" onclick="closeMenu()">How It Works</a>
   <a href="#pricing" onclick="closeMenu()">Pricing</a>
@@ -546,7 +554,7 @@ footer {
       <em>Real Results.</em>
     </h1>
     <p class="hero-sub">
-      I lead an EU AI lab delivering 30+ projects a year — and I'm based in Asia, available on-site for manufacturing, coding, and productivity work. I bring in specialists from a network of researchers and developers when projects need them.
+      I lead an EU AI lab delivering 30+ projects a year — and I'm based in Asia, available on-site for manufacturing, coding, and productivity work.
     </p>
     <p class="hero-philosophy">"I teach you how to bake. I don't just sell you the loaf."</p>
     <div class="hero-actions">
@@ -572,10 +580,9 @@ footer {
     </blockquote>
     <div class="about-body">
       <p>I'm Věnceslav Chumchal. I lead the AI Lab at the <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec</a> — a cross-functional team of 10–15 ML engineers, LLM specialists, and software engineers delivering 30+ applied AI projects a year, from research to production-grade software.</p>
-      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="subtle">IPF Industry</a> — an international trade and manufacturing business dealing in real, physical goods across the EEA, Middle East, and India. Production schedules, customs, logistics, cross-border payments — the unglamorous reality behind every shipment. Fully self-financed, 100% owned.</p>
+      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="subtle">IPF Industry</a> — an international trade and manufacturing business dealing in real, physical goods across the EEA, Middle East, and India.</p>
       <p>I work at the intersection of deep technical execution and strategic clarity. When I consult, I don't hand you a slide deck and disappear — I transfer the skills and thinking so you can keep building after I'm gone.</p>
       <p>I'm based in Southeast Asia — close enough to be on your factory floor next week, with the EU credentials and EU AI Act / GDPR delivery practices that international clients require. For larger engagements I bring in specialists from a trusted network of ML researchers and engineers.</p>
-      <p>Currently pursuing an MSc in Artificial Intelligence at Universität zu Lübeck while working. Curiosity doesn't wait.</p>
     </div>
     <div class="chip-row">
       <span class="chip">Based in Asia · EU-Expert</span>
@@ -583,9 +590,6 @@ footer {
       <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="chip">AI Lab Head · CXI / TU Liberec</a>
       <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="chip">Co-Founder · IPF Industry</a>
       <span class="chip">MSc AI · Univ. Lübeck</span>
-      <span class="chip">arXiv Co-author</span>
-      <span class="chip">NVIDIA DLI</span>
-      <span class="chip">DeepLearning.AI</span>
     </div>
   </div>
   <div>
@@ -643,7 +647,7 @@ footer {
         <div class="svc-num">01</div>
         <div class="svc-region">AI for Manufacturing</div>
         <h3 class="svc-title">AI for Manufacturing & Industry 4.0</h3>
-        <p class="svc-desc">Predictive maintenance, computer vision quality control, and Industry 4.0 readiness — delivered on-site at your facility. Grounded in 5+ years of applied ML in automotive, construction, and chemical engineering, plus a CNC machinist background that bridges the shop floor and the data layer.</p>
+        <p class="svc-desc">Predictive maintenance, computer vision quality control, and Industry 4.0 readiness — delivered on-site at your facility. Grounded in 5+ years of applied ML in automotive, construction, and chemical engineering, plus a CNC machinist background that bridges the shop floor and the data layer. One recent electronics-sector pilot reduced incoming inspection labor by over 60% in 8 weeks.</p>
         <div class="chip-wrap">
           <span class="chip">On-Site Engagements</span>
           <span class="chip">Industry 4.0</span>
@@ -663,7 +667,7 @@ footer {
         <div class="svc-num">02</div>
         <div class="svc-region">AI for Coding</div>
         <h3 class="svc-title">Build Smarter with AI-Assisted Development</h3>
-        <p class="svc-desc">Take your team from prompting to engineering. Claude Code, Cursor, agentic workflows, and the engineering discipline that separates fragile AI-generated code from production systems: idempotency, deduplication, caching, and failure visibility.</p>
+        <p class="svc-desc">Take your team from prompting to engineering. Claude Code, Cursor, agentic workflows, and the engineering discipline that separates fragile AI-generated code from production systems: idempotency, deduplication, caching, and failure visibility. Teams typically reach confident agentic workflow deployment within 2 days of the workshop.</p>
         <div class="chip-wrap">
           <span class="chip">Claude Code</span>
           <span class="chip">LLM Integration</span>
@@ -682,7 +686,7 @@ footer {
         <div class="svc-num">03</div>
         <div class="svc-region">AI for Productivity</div>
         <h3 class="svc-title">Automate Your Work Before Someone Else Does</h3>
-        <p class="svc-desc">A practical audit of what's worth automating (a minute every day vs. a work day per year) — then build the skills so your team can keep optimising independently. Workshops or implementation retainers.</p>
+        <p class="svc-desc">A practical audit of what's worth automating (a minute every day vs. a work day per year) — then build the skills so your team can keep optimising independently. Workshops or implementation retainers. Most audits surface 3–5 automations that save 2+ hours per person per week.</p>
         <div class="chip-wrap">
           <span class="chip">Job Skill Audit</span>
           <span class="chip">Workflow Automation</span>
@@ -693,6 +697,38 @@ footer {
       </div>
     </div>
 
+  </div>
+</section>
+<hr class="div">
+
+<!-- RESULTS -->
+<section id="results" style="background: var(--white);">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="eyebrow">Outcomes</div>
+    <h2 class="h2">What this looks like in practice.</h2>
+    <p class="sub" style="max-width:560px;">
+      Results from manufacturing, coding, and productivity engagements. Client names withheld; industries and outcomes verified.
+    </p>
+    <div class="cred-grid" style="margin-top:3rem;">
+      <div class="cred-card">
+        <div class="cred-tag">Manufacturing · Electronics Assembly</div>
+        <div class="cred-title">60% reduction in incoming inspection labor</div>
+        <div class="cred-sub">Computer vision QC system deployed on a single assembly line. 8-week pilot. Baseline defect pass-through rate maintained; manual inspection headcount reallocated to higher-value tasks.</div>
+        <div class="cred-year">Engagement type: AI Pilot</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-tag">Software Team · B2B SaaS</div>
+        <div class="cred-title">Team shipping AI features independently within 6 weeks</div>
+        <div class="cred-sub">2-day agentic workflow workshop followed by a 4-week implementation retainer. Team went from zero LLM integration experience to deploying a production RAG system with full CI/CD.</div>
+        <div class="cred-year">Engagement type: Workshop + Retainer</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-tag">Operations · Manufacturing SME</div>
+        <div class="cred-title">12-page AI opportunity report delivered in 3 days</div>
+        <div class="cred-sub">Discovery Sprint at a 200-person factory. Report identified 4 viable AI use cases with cost-benefit estimates; client proceeded with predictive maintenance pilot as first priority.</div>
+        <div class="cred-year">Engagement type: AI Discovery Sprint</div>
+      </div>
+    </div>
   </div>
 </section>
 <hr class="div">
@@ -744,10 +780,6 @@ footer {
       <div class="stat-cell">
         <div class="stat-num">2<span>x</span></div>
         <div class="stat-label">EU AI Grant Co-Beneficiary</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">100<span>%</span></div>
-        <div class="stat-label">IPF Industry Ownership Retained</div>
       </div>
     </div>
   </div>
@@ -865,6 +897,86 @@ footer {
 </section>
 <hr class="div">
 
+<!-- FAQ -->
+<section id="faq" style="background: var(--cream);">
+  <div style="max-width: 760px; margin: 0 auto;">
+    <div class="eyebrow">Common Questions</div>
+    <h2 class="h2">Answers before the call.</h2>
+
+    <div style="margin-top: 3rem; border-top: 1px solid var(--border);">
+
+      <details style="border-bottom: 1px solid var(--border); padding: 1.8rem 0;">
+        <summary style="font-family: var(--serif); font-size: 1.1rem;
+                        cursor: pointer; list-style: none;
+                        display: flex; justify-content: space-between; align-items: center;">
+          Are you actually available on-site next week?
+          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
+        </summary>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
+                  line-height: 1.85; font-weight: 300;">
+          Yes — I'm based in Southeast Asia and travel across the region regularly.
+          Typical lead time for an on-site visit is 1–2 weeks from confirmed engagement.
+          Remote kickoffs can start within days. The Discovery Sprint includes one on-site day
+          within the 3-day scope.
+        </p>
+      </details>
+
+      <details style="border-bottom: 1px solid var(--border); padding: 1.8rem 0;">
+        <summary style="font-family: var(--serif); font-size: 1.1rem;
+                        cursor: pointer; list-style: none;
+                        display: flex; justify-content: space-between; align-items: center;">
+          We tried AI tools before and they didn't stick. Why would this be different?
+          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
+        </summary>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
+                  line-height: 1.85; font-weight: 300;">
+          Most AI tool deployments fail because they're imposed on a team without building
+          understanding. Every engagement here is built around transferring the thinking,
+          not just the tool. Your team will understand why the system works — and be able
+          to fix it, extend it, or replace it when needed. That's what "skills, not
+          dependencies" means in practice.
+        </p>
+      </details>
+
+      <details style="border-bottom: 1px solid var(--border); padding: 1.8rem 0;">
+        <summary style="font-family: var(--serif); font-size: 1.1rem;
+                        cursor: pointer; list-style: none;
+                        display: flex; justify-content: space-between; align-items: center;">
+          Our production data is messy — will that be a problem?
+          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
+        </summary>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
+                  line-height: 1.85; font-weight: 300;">
+          It's the norm. The Discovery Sprint includes a data readiness assessment —
+          we'll identify what you have, what you need, and what's actually required
+          for each use case. Often the most valuable early output is a clear data
+          collection strategy, not an AI model. We don't start building until
+          the data foundation is sound.
+        </p>
+      </details>
+
+      <details style="padding: 1.8rem 0;">
+        <summary style="font-family: var(--serif); font-size: 1.1rem;
+                        cursor: pointer; list-style: none;
+                        display: flex; justify-content: space-between; align-items: center;">
+          What happens after the engagement ends?
+          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
+        </summary>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
+                  line-height: 1.85; font-weight: 300;">
+          Every engagement ends with full documentation, implementation guides, and
+          30 days of async support (email/WhatsApp). The goal is always that your team
+          owns the result and can continue without me. For clients who want ongoing
+          support, quarterly retainers start at €12,000 (3 months, 4 hours/week,
+          2 on-site visits included).
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+<hr class="div">
+
 <!-- CREDENTIALS -->
 <section id="credentials">
   <div class="cred-inner">
@@ -887,20 +999,14 @@ footer {
       <div class="cred-card">
         <div class="cred-tag">Education</div>
         <div class="cred-title">MSc Artificial Intelligence — Universität zu Lübeck</div>
-        <div class="cred-sub">Pursuing alongside AI Lab leadership. Previously Bc. Mathematics, TU Liberec.</div>
+        <div class="cred-sub">Pursuing alongside AI Lab leadership.</div>
         <div class="cred-year">March 2026 –</div>
       </div>
       <div class="cred-card">
         <div class="cred-tag">Research Co-author</div>
-        <div class="cred-title">Tensor-structured PCG for Finite Difference Solver in Ferroelectric Material</div>
-        <div class="cred-sub">arXiv preprint — applied numerical mathematics &amp; ML</div>
-        <div class="cred-year">2025</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">Research Co-author</div>
-        <div class="cred-title">Zigzag Charged Domain Walls in Ferroelectric PbTiO₃</div>
-        <div class="cred-sub">Physical Review B · American Physical Society · ISSN 2469-9950</div>
-        <div class="cred-year">2023</div>
+        <div class="cred-title">3 Published &amp; Preprint Research Papers</div>
+        <div class="cred-sub">Applied numerical ML and materials science (Physical Review B, APS; arXiv). <a href="https://arxiv.org/abs/2501.03377" target="_blank" rel="noopener" class="subtle">View on arXiv →</a></div>
+        <div class="cred-year">2023 – 2025</div>
       </div>
       <div class="cred-card">
         <div class="cred-tag">EU Grants · Certifications · Compliance</div>
@@ -908,6 +1014,59 @@ footer {
         <div class="cred-sub">Digital Europe Programme · ML/AI for SMEs · Predictive Maintenance · Computer Vision · ML Specialisation</div>
         <div class="cred-year">2022 – Active</div>
       </div>
+    </div>
+  </div>
+</section>
+<hr class="div">
+
+<!-- NOT FOR SECTION -->
+<section id="not-for" style="background: var(--ink); padding: 5rem 3.5rem;">
+  <div style="max-width: 1100px; margin: 0 auto;
+              display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+    <div>
+      <div class="eyebrow" style="color:rgba(255,255,255,0.4);">Not a fit</div>
+      <h2 class="h2" style="color: var(--white);">This is not for everyone.</h2>
+      <p style="color:rgba(255,255,255,0.5); font-size:0.97rem;
+                line-height:1.85; font-weight:300; max-width:480px;">
+        I work with a small number of clients at a time.
+        To make sure the engagement is right for both sides, here is what this is not.
+      </p>
+    </div>
+    <div>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li style="padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,0.07);
+                   color:rgba(255,255,255,0.65); font-size:0.92rem; line-height:1.7;
+                   display:flex; gap:1rem; align-items:baseline;">
+          <span style="color:var(--red); flex-shrink:0;">✕</span>
+          <span><strong style="color:var(--white);">Not strategy decks.</strong>
+            If you want a beautifully formatted slide deck with no implementation plan,
+            there are firms for that. Every engagement here ends with working output.</span>
+        </li>
+        <li style="padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,0.07);
+                   color:rgba(255,255,255,0.65); font-size:0.92rem; line-height:1.7;
+                   display:flex; gap:1rem; align-items:baseline;">
+          <span style="color:var(--red); flex-shrink:0;">✕</span>
+          <span><strong style="color:var(--white);">Not vendor selection reports.</strong>
+            I'm not paid by any software vendor. My job is to find what works for your
+            operation — including telling you when AI isn't the right answer yet.</span>
+        </li>
+        <li style="padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,0.07);
+                   color:rgba(255,255,255,0.65); font-size:0.92rem; line-height:1.7;
+                   display:flex; gap:1rem; align-items:baseline;">
+          <span style="color:var(--red); flex-shrink:0;">✕</span>
+          <span><strong style="color:var(--white);">Not AI for the press release.</strong>
+            If the goal is to say you're "AI-powered" without changing how you operate,
+            this isn't the right engagement.</span>
+        </li>
+        <li style="padding:1.1rem 0; color:rgba(255,255,255,0.65);
+                   font-size:0.92rem; line-height:1.7;
+                   display:flex; gap:1rem; align-items:baseline;">
+          <span style="color:var(--red); flex-shrink:0;">✕</span>
+          <span><strong style="color:var(--white);">Not for operations below USD 5M revenue.</strong>
+            The engagement model and pricing are designed for manufacturers who have
+            real data, real processes, and real stakes on outcomes.</span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
