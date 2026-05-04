@@ -1330,7 +1330,98 @@ footer {
   </div>
 </footer>
 
-<!-- SCRIPTS -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<script>
+// ── Nav scroll ──────────────────────────────────────────────
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ── Hamburger ───────────────────────────────────────────────
+const btn = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+btn.addEventListener('click', () => {
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMenu() {
+  btn.classList.remove('open');
+  menu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── Scroll reveal ───────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger siblings within same parent
+      const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+      siblings.forEach((el, idx) => {
+        if (el === entry.target) {
+          el.style.transitionDelay = (idx * 0.07) + 's';
+        }
+      });
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Analytics ───────────────────────────────────────────────
+function trackEvent(name, props) {
+  try { va('event', Object.assign({ name }, props || {})); } catch(e) {}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href*="calendarbridge.com"]').forEach(el => {
+    el.addEventListener('click', () => {
+      trackEvent('booking_click', { source: el.closest('#hero') ? 'hero' : el.closest('#pricing') ? 'pricing' : 'contact' });
+    });
+  });
+
+  document.querySelectorAll('#pricing .btn-primary').forEach(el => {
+    el.addEventListener('click', () => {
+      const tier = (el.closest('.p-card')?.querySelector('.p-name')?.textContent || '').trim();
+      trackEvent('pricing_cta_click', { tier });
+    });
+  });
+
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(el => {
+    el.addEventListener('click', () => trackEvent('nav_click', { label: el.textContent.trim() }));
+  });
+
+  document.querySelectorAll('.c-row').forEach(el => {
+    el.addEventListener('click', () => {
+      const label = el.querySelector('.c-label')?.textContent?.trim() || '';
+      trackEvent('contact_channel_click', { channel: label });
+    });
+  });
+
+  // Scroll depth milestones
+  const depthFired = {};
+  window.addEventListener('scroll', () => {
+    const pct = Math.round(((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100);
+    [25, 50, 75, 100].forEach(m => {
+      if (pct >= m && !depthFired[m]) {
+        depthFired[m] = true;
+        trackEvent('scroll_depth', { percent: m });
+      }
+    });
+  }, { passive: true });
+});
+</script>
 
 </body>
 </html>
