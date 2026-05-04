@@ -11,13 +11,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://venceslav.tech/" />
 <meta property="og:title" content="Věnceslav Chumchal · EU AI Expert · Based in Asia" />
-<meta property="og:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops in manufacturing, coding, and productivity. On-site engagements across the region." />
+<meta property="og:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops in manufacturing, coding, and productivity." />
 <meta property="og:image" content="https://venceslav.tech/profile_foto.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Věnceslav Chumchal · EU AI Expert · Based in Asia" />
-<meta name="twitter:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops in manufacturing, coding, and productivity. On-site engagements across the region." />
+<meta name="twitter:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops." />
 <meta name="twitter:image" content="https://venceslav.tech/profile_foto.jpg" />
 <script type="application/ld+json">
 {
@@ -26,7 +26,7 @@
   "name": "Věnceslav Chumchal",
   "url": "https://venceslav.tech/",
   "jobTitle": "AI Consultant & AI Lab Head",
-  "description": "EU AI Lab Head based in Asia delivering fixed-price AI pilots and workshops for manufacturing, coding, and productivity. EU AI Act / GDPR-compliant delivery.",
+  "description": "EU AI Lab Head based in Asia delivering fixed-price AI pilots and workshops for manufacturing, coding, and productivity.",
   "telephone": "+420777124827",
   "email": "venceslav.ch@outlook.com",
   "image": "https://venceslav.tech/profile_foto.jpg",
@@ -34,538 +34,257 @@
     "https://www.linkedin.com/in/venceslav-chumchal/",
     "https://arxiv.org/abs/2501.03377"
   ],
-  "knowsAbout": [
-    "Artificial Intelligence",
-    "Machine Learning",
-    "Manufacturing AI",
-    "Industry 4.0",
-    "EU AI Act",
-    "GDPR",
-    "Predictive Maintenance",
-    "Computer Vision",
-    "Agentic Workflows"
-  ],
+  "knowsAbout": ["Artificial Intelligence","Machine Learning","Manufacturing AI","Industry 4.0","EU AI Act","GDPR","Predictive Maintenance","Computer Vision","Agentic Workflows"],
   "affiliation": {
     "@type": "Organization",
     "name": "Institute for Nanomaterials, Advanced Technologies and Innovation – TU Liberec",
     "url": "https://www.cxi.tul.cz/en/"
   },
   "offers": [
-    {
-      "@type": "Offer",
-      "name": "AI Discovery Sprint",
-      "price": "4500",
-      "priceCurrency": "EUR",
-      "description": "3-day fixed-scope AI opportunity audit with 12-page written report and executive presentation."
-    },
-    {
-      "@type": "Offer",
-      "name": "AI for Manufacturing Pilot",
-      "price": "25000",
-      "priceCurrency": "EUR",
-      "description": "6–12 week pilot for predictive maintenance, quality control, or Industry 4.0 readiness."
-    },
-    {
-      "@type": "Offer",
-      "name": "Workshops & Retainers",
-      "price": "3500",
-      "priceCurrency": "EUR",
-      "description": "On-site workshops for dev teams (Claude Code, agentic workflows) or operations teams (workflow automation)."
-    }
+    {"@type":"Offer","name":"AI Discovery Sprint","price":"4500","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"AI for Manufacturing Pilot","price":"25000","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Workshops & Retainers","price":"3500","priceCurrency":"EUR"}
   ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+/* ── TOKENS ── */
 :root {
-  --red: #B91C2E;
-  --red-dark: #7F1220;
-  --red-light: #f8eaec;
-  --cream: #F8F5F0;
-  --ink: #18120F;
-  --ink-muted: #5A4C43;
-  --ink-light: #9A8A81;
-  --white: #FFFFFF;
-  --gold: #C4922A;
-  --border: rgba(24,18,15,0.09);
-  --sans: 'Outfit', sans-serif;
-  --serif: 'EB Garamond', serif;
+  --bg:      #1A2035;
+  --bg-deep: #131929;
+  --bg-card: #1F2740;
+  --red:     #FF3333;
+  --red-dark:#CC1F1F;
+  --white:   #FFFFFF;
+  --muted:   rgba(255,255,255,0.45);
+  --faint:   rgba(255,255,255,0.15);
+  --border:  rgba(255,255,255,0.07);
+  --grid:    rgba(255,255,255,0.022);
+  --sans:    'Space Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
 }
+
+/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--white);
   font-family: var(--sans);
-  font-weight: 300;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  font-weight: 400;
   overflow-x: hidden;
 }
 
-/* NAV */
+/* ── GRID TEXTURE (applied via class) ── */
+.grid-overlay {
+  position: relative;
+}
+.grid-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+.grid-overlay > * { position: relative; z-index: 1; }
+
+/* ── SHARED UTILITIES ── */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+.h2 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 1.2rem;
+}
+.sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 440px;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--faint);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.chip {
+  display: inline-block;
+  background: rgba(255,255,255,0.07);
+  color: var(--faint);
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+}
+hr.div {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.1rem 3.5rem;
-  background: rgba(248,245,240,0.93);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(26,32,53,0.94);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-  transition: box-shadow 0.3s;
+  border-color: var(--border);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.25);
 }
-nav.scrolled { box-shadow: 0 2px 24px rgba(24,18,15,0.08); }
 .nav-logo {
-  font-family: var(--serif);
-  font-size: 1.25rem; font-weight: 500;
-  color: var(--ink); text-decoration: none; letter-spacing: -0.005em;
-  white-space: nowrap;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  text-decoration: none;
 }
-.nav-logo span { color: var(--red); font-weight: 600; }
-.nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; }
+.nav-logo span { color: var(--red); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a {
-  text-decoration: none; color: var(--ink-muted);
-  font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.07em; text-transform: uppercase;
-  transition: color 0.2s; position: relative;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
 }
 .nav-links a::after {
-  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-  height: 1px; background: var(--red);
-  transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s;
 }
-.nav-links a:hover { color: var(--red); }
+.nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { transform: scaleX(1); }
 .nav-cta {
-  background: var(--red) !important; color: var(--white) !important;
-  padding: 0.5rem 1.3rem !important; letter-spacing: 0.06em !important;
+  background: var(--red) !important;
+  color: var(--white) !important;
+  padding: 0.45rem 1.2rem;
 }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--red-dark) !important; }
+
+/* ── HAMBURGER ── */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   cursor: pointer; background: none; border: none; padding: 4px; z-index: 300;
 }
 .hamburger span {
   display: block; width: 24px; height: 2px;
-  background: var(--ink); transition: transform 0.3s, opacity 0.3s;
+  background: var(--white); transition: transform 0.3s, opacity 0.3s;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU ── */
 .mobile-menu {
   display: none; position: fixed; inset: 0; z-index: 190;
-  background: var(--cream); flex-direction: column;
-  align-items: center; justify-content: center; gap: 0;
+  background: var(--bg-deep);
+  flex-direction: column; align-items: center; justify-content: center;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  font-family: var(--serif); font-size: 2.4rem; font-weight: 400;
-  color: var(--ink); text-decoration: none;
-  padding: 0.7rem 2rem; letter-spacing: -0.02em;
-  transition: color 0.2s; border-bottom: 1px solid var(--border);
+  font-family: var(--display);
+  font-size: 3rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-bottom: 1px solid var(--border);
   width: 100%; text-align: center;
+  transition: color 0.2s;
 }
 .mobile-menu a:first-child { border-top: 1px solid var(--border); }
 .mobile-menu a:hover { color: var(--red); }
-.mobile-menu a.m-cta { background: var(--red); color: var(--white) !important; margin-top: 1.5rem; border: none; }
-
-/* HERO */
-#hero {
-  min-height: 100vh; display: flex;
-  align-items: center; padding-top: 72px;
-  background:
-    radial-gradient(ellipse at top right, rgba(185,28,46,0.06), transparent 60%),
-    radial-gradient(ellipse at bottom left, rgba(196,146,42,0.05), transparent 60%);
-}
-.hero-left {
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 5rem 3.5rem; max-width: 1100px;
-  width: 100%; margin: 0 auto;
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--red); font-weight: 500; margin-bottom: 2rem;
-}
-.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--red); }
-.hero-name {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 5.5vw, 5rem);
-  font-weight: 400; line-height: 1.0;
-  letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.6rem;
-}
-.hero-name strong { font-weight: 600; }
-.hero-name em { font-style: italic; color: var(--red); }
-.hero-sub {
-  font-size: 1.05rem; color: var(--ink-muted);
-  max-width: 620px; line-height: 1.85; font-weight: 300; margin-bottom: 1.4rem;
-}
-.hero-philosophy {
-  font-family: var(--serif); font-size: 1.25rem; font-style: italic;
-  color: var(--ink); border-left: 2px solid var(--red);
-  padding-left: 1.4rem; margin-bottom: 2.8rem; max-width: 560px; line-height: 1.5;
-}
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-.btn-primary {
-  background: var(--red); color: var(--white);
-  padding: 0.85rem 2rem; font-family: var(--sans);
-  font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.09em; text-transform: uppercase;
-  border: none; cursor: pointer; text-decoration: none;
-  display: inline-block; transition: background 0.2s, transform 0.2s;
-}
-.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
-.btn-outline {
-  border: 1px solid var(--ink); color: var(--ink);
-  padding: 0.85rem 2rem; font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.09em; text-transform: uppercase;
-  text-decoration: none; display: inline-block; transition: all 0.2s;
-}
-.btn-outline:hover { border-color: var(--red); color: var(--red); }
-.hero-meta {
-  display: flex; flex-wrap: wrap; gap: 0.7rem 1.6rem;
-  margin-top: 2.4rem; padding-top: 1.8rem;
-  border-top: 1px solid var(--border); max-width: 700px;
-}
-.hero-meta-item {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--ink-muted); font-weight: 500;
-  display: inline-flex; align-items: center; gap: 0.55rem;
-}
-.hero-meta-item::before {
-  content: ''; width: 5px; height: 5px;
-  background: var(--red); border-radius: 50%;
+.mobile-menu a.m-cta {
+  background: var(--red);
+  color: var(--white) !important;
+  margin-top: 1.5rem;
+  border: none;
 }
 
-/* COMMON */
-section { padding: 7rem 3.5rem; }
-.eyebrow {
-  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--red); font-weight: 500; margin-bottom: 1.1rem;
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--red); }
-.eyebrow.gold { color: var(--gold); }
-.eyebrow.gold::before { background: var(--gold); }
-.h2 {
-  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 400; line-height: 1.1;
-  letter-spacing: -0.02em; margin-bottom: 1.25rem;
-}
-.sub { color: var(--ink-muted); font-size: 0.97rem; max-width: 480px; line-height: 1.85; font-weight: 300; }
-hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
-.chip {
-  background: var(--red-light); color: var(--red-dark);
-  font-size: 0.68rem; font-weight: 500;
-  letter-spacing: 0.07em; text-transform: uppercase; padding: 0.3rem 0.8rem;
-}
-a.chip { text-decoration: none; transition: background 0.2s; }
-a.chip:hover { background: #efd5d9; }
-a.subtle {
-  color: inherit; text-decoration: underline;
-  text-decoration-style: dotted; text-underline-offset: 3px;
-  text-decoration-color: rgba(24,18,15,0.28);
-  transition: color 0.2s, text-decoration-color 0.2s;
-}
-a.subtle:hover { color: var(--red); text-decoration-color: var(--red); }
-a.subtle-light {
-  color: inherit; text-decoration: underline;
-  text-decoration-style: dotted; text-underline-offset: 3px;
-  text-decoration-color: rgba(255,255,255,0.3);
-  transition: color 0.2s, text-decoration-color 0.2s;
-}
-a.subtle-light:hover { color: rgba(255,255,255,0.9); text-decoration-color: rgba(255,255,255,0.7); }
-
-/* FAQ */
-details[open] summary span {
-  transform: rotate(45deg);
-}
-
-/* ABOUT */
-#about {
-  background: var(--white); display: grid;
-  grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-}
-.about-quote {
-  font-family: var(--serif); font-size: 1.55rem;
-  font-style: italic; font-weight: 400; line-height: 1.45;
-  border-left: 3px solid var(--red); padding-left: 1.8rem; margin-bottom: 2.5rem;
-}
-.about-body { color: var(--ink-muted); line-height: 1.9; font-size: 0.96rem; font-weight: 300; }
-.about-body p + p { margin-top: 1rem; }
-.chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 2rem; }
-.about-img-wrap { position: relative; overflow: hidden; }
-.about-img-wrap img {
-  width: 100%; height: auto; display: block;
-  image-rendering: -webkit-optimize-contrast;
-}
-.about-img-deco {
-  position: absolute; top: 1.5rem; right: 1.5rem;
-  width: 64px; height: 64px; border: 1px solid rgba(255,255,255,0.35);
-}
-.about-img-bar {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: var(--red); padding: 1.8rem 2rem;
-}
-.about-bar-name { font-family: var(--serif); font-size: 1.25rem; color: var(--white); margin-bottom: 0.2rem; }
-.about-bar-role { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
-
-/* PHILOSOPHY STRIP */
-#philosophy {
-  background: var(--ink); padding: 5rem 3.5rem;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-}
-.phil-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 2.6rem 2rem;
-  position: relative; overflow: hidden;
-  transition: background 0.3s;
-}
-.phil-card:hover { background: rgba(255,255,255,0.08); }
-.phil-num {
-  font-family: var(--serif); font-size: 5rem; font-weight: 400;
-  color: rgba(255,255,255,0.07); line-height: 1;
-  position: absolute; top: 1rem; right: 1.5rem;
-}
-.phil-icon { font-size: 1.5rem; margin-bottom: 1.2rem; display: block; }
-.phil-title {
-  font-family: var(--serif); font-size: 1.35rem; font-weight: 500;
-  color: var(--white); margin-bottom: 0.9rem; line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-.phil-desc { font-size: 0.92rem; color: rgba(255,255,255,0.78); line-height: 1.8; font-weight: 300; }
-
-/* SERVICES */
-#services { background: var(--cream); }
-.svc-top {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: end; margin-bottom: 4rem;
-}
-.svc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
-.svc-card {
-  background: var(--white); overflow: hidden;
-  position: relative; cursor: default; transition: background 0.35s;
-}
-.svc-card:hover { background: var(--ink); }
-.svc-card:hover .svc-title,
-.svc-card:hover .svc-desc,
-.svc-card:hover .svc-num { color: var(--white); }
-.svc-card:hover .chip { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-.svc-card:hover .svc-region { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.45); }
-.svc-bg {
-  height: 220px; background-size: cover; background-position: center;
-  position: relative; overflow: hidden;
-}
-.svc-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(24,18,15,0.2), rgba(24,18,15,0.65));
-}
-.svc-bg-title {
-  position: absolute; bottom: 1rem; left: 1.5rem; z-index: 1;
-  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
-  color: var(--white); text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-}
-.svc-body { padding: 2rem 2rem 2.2rem; }
-.svc-num {
-  font-family: var(--serif); font-size: 3rem;
-  color: rgba(24,18,15,0.05); line-height: 1;
-  margin-bottom: 0.6rem; transition: color 0.35s;
-}
-.svc-region {
-  display: inline-block; border: 1px solid var(--border);
-  font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase;
-  font-weight: 500; color: var(--ink-light); padding: 0.2rem 0.6rem;
-  margin-bottom: 0.8rem; transition: all 0.35s;
-}
-.svc-title {
-  font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
-  letter-spacing: -0.01em; margin-bottom: 0.7rem; transition: color 0.35s;
-}
-.svc-desc {
-  font-size: 0.87rem; color: var(--ink-muted); line-height: 1.8;
-  font-weight: 300; margin-bottom: 1.2rem; transition: color 0.35s;
-}
-.chip-wrap { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-
-/* WHO IT'S FOR */
-#audience {
-  background: var(--white);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-}
-.aud-list { list-style: none; margin-top: 2.5rem; }
-.aud-list li {
-  padding: 1.5rem 0; border-bottom: 1px solid var(--border);
-  display: grid; grid-template-columns: 64px 1fr; gap: 1.4rem;
-  align-items: start;
-  font-size: 0.95rem; color: var(--ink-muted); line-height: 1.7;
-}
-.aud-list li:first-child { border-top: 1px solid var(--border); }
-.aud-n {
-  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
-  color: var(--red); letter-spacing: 0.14em;
-  padding-top: 0.35rem; line-height: 1;
-}
-.aud-strong { color: var(--ink); display: block; margin-bottom: 0.25rem; font-weight: 500; font-size: 1rem; }
-
-/* STATS */
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
-.stat-cell {
-  background: var(--white); padding: 2.5rem 2rem;
-  transition: background 0.2s;
-}
-.stat-cell:hover { background: var(--cream); }
-.stat-num {
-  font-family: var(--serif); font-size: 3.5rem; font-weight: 400;
-  color: var(--ink); line-height: 1; margin-bottom: 0.3rem;
-}
-.stat-num span { color: var(--red); }
-.stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; }
-
-/* PROCESS */
-#process { background: var(--cream); position: relative; overflow: hidden; }
-.process-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: start; position: relative; z-index: 1;
-}
-.steps { margin-top: 3rem; }
-.step {
-  display: grid; grid-template-columns: 72px 1fr;
-  border-bottom: 1px solid var(--border); padding: 2.2rem 0;
-}
-.step:first-child { border-top: 1px solid var(--border); }
-.step-n { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--red); line-height: 1; }
-.step-title { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.4rem; }
-.step-desc { font-size: 0.87rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; }
-.process-right { padding-top: 6rem; }
-.deliverables-label {
-  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--red); font-weight: 500; margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.deliverables-label::before { content: ''; width: 20px; height: 1px; background: var(--red); display: block; }
-.deliverable-list { list-style: none; }
-.deliverable-list li {
-  padding: 0.8rem 0; border-bottom: 1px solid var(--border);
-  font-size: 0.88rem; color: var(--ink-muted); display: flex; gap: 0.8rem; align-items: baseline;
-}
-.deliverable-list li::before { content: '→'; color: var(--red); font-size: 0.75rem; }
-
-/* PRICING */
-#pricing { background: var(--white); }
-.pricing-top {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: end; margin-bottom: 4rem;
-}
-.p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); align-items: stretch; }
-.p-card {
-  background: var(--cream); padding: 2.8rem 2.2rem;
-  position: relative; display: flex; flex-direction: column;
-}
-.p-card .btn-primary { margin-top: auto; align-self: stretch; text-align: center; }
-.p-card.feat { background: var(--red); }
-.p-card.feat .p-name { color: rgba(255,255,255,0.6); }
-.p-card.feat .p-price, .p-card.feat .p-period,
-.p-card.feat .p-desc, .p-card.feat .p-feats li { color: rgba(255,255,255,0.85); }
-.p-card.feat .p-feats li::before { color: rgba(255,255,255,0.7); }
-.p-card.feat .btn-primary { background: var(--white); color: var(--red); }
-.p-card.feat .btn-primary:hover { background: var(--cream); }
-.p-pop {
-  position: absolute; top: 1.3rem; right: 1.3rem;
-  background: rgba(255,255,255,0.2); color: var(--white);
-  font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 0.22rem 0.6rem;
-}
-.p-name { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; margin-bottom: 1.8rem; }
-.p-price { font-family: var(--serif); font-size: 2.8rem; font-weight: 400; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.2rem; }
-.p-period { font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 1.5rem; font-weight: 300; }
-.p-desc { font-size: 0.86rem; color: var(--ink-muted); line-height: 1.75; margin-bottom: 1.8rem; border-top: 1px solid var(--border); padding-top: 1.4rem; font-weight: 300; }
-.p-feats { list-style: none; margin-bottom: 2.2rem; }
-.p-feats li { font-size: 0.85rem; color: var(--ink-muted); padding: 0.35rem 0; display: flex; gap: 0.6rem; align-items: baseline; font-weight: 300; }
-.p-feats li::before { content: '✓'; color: var(--red); font-size: 0.72rem; font-weight: 700; flex-shrink: 0; }
-.p-note { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: var(--ink-light); font-style: italic; }
-
-/* CREDENTIALS */
-#credentials { background: var(--cream); position: relative; overflow: hidden; }
-.cred-inner { position: relative; z-index: 1; }
-.cred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-top: 4rem; }
-.cred-card { background: var(--white); padding: 2.2rem; }
-.cred-tag { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; margin-bottom: 1rem; }
-.cred-title { font-family: var(--serif); font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.4rem; }
-.cred-sub { font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; line-height: 1.6; }
-.cred-year { font-size: 0.7rem; color: var(--red); font-weight: 500; margin-top: 0.7rem; letter-spacing: 0.05em; }
-
-/* CONTACT */
-#contact { background: var(--ink); color: var(--white); position: relative; overflow: hidden; }
-.contact-bg {
-  position: absolute; inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80');
-  background-size: cover; background-position: center; opacity: 0.06;
-}
-.contact-inner {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-}
-#contact .h2 { color: var(--white); }
-#contact .sub { color: rgba(255,255,255,0.5); }
-.c-channels { margin-top: 3rem; display: flex; flex-direction: column; }
-.c-row {
-  display: flex; align-items: center; gap: 1.5rem;
-  padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-  text-decoration: none; transition: gap 0.25s;
-}
-.c-row:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-.c-row:hover { gap: 2rem; }
-.c-icon {
-  width: 44px; height: 44px;
-  border: 1px solid rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 1.1rem; transition: background 0.2s;
-}
-.c-row:hover .c-icon { background: var(--red); border-color: var(--red); }
-.c-label { font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; margin-bottom: 0.2rem; }
-.c-val { font-family: var(--serif); font-size: 1.2rem; color: var(--white); font-weight: 400; }
-.c-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08); padding: 3rem;
-}
-.c-card-head { font-family: var(--serif); font-size: 1.6rem; font-style: italic; color: var(--white); margin-bottom: 1.2rem; line-height: 1.3; }
-.c-card-body { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.85; font-weight: 300; margin-bottom: 2rem; }
-.c-tz { font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); margin-top: 1rem; font-style: italic; }
-
-/* FOOTER */
-footer {
-  background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 1.8rem 3.5rem; display: flex; justify-content: space-between; align-items: center;
-}
-.ft-copy { font-size: 0.76rem; color: rgba(255,255,255,0.25); }
-.ft-links { display: flex; gap: 2rem; }
-.ft-links a { font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
-.ft-links a:hover { color: var(--gold); }
-
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-.hero-eyebrow { animation: fadeUp 0.55s ease both; }
-.hero-name    { animation: fadeUp 0.55s 0.1s ease both; }
-.hero-sub     { animation: fadeUp 0.55s 0.2s ease both; }
-.hero-philosophy { animation: fadeUp 0.55s 0.28s ease both; }
-.hero-actions { animation: fadeUp 0.55s 0.36s ease both; }
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  #philosophy { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
-}
-@media (max-width: 960px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero-left { padding: 3rem 1.5rem 2rem; }
-  #about, #audience, .contact-inner, .process-inner, .proof-top { grid-template-columns: 1fr; gap: 3rem; }
-  #not-for > div { grid-template-columns: 1fr !important; }
-  section { padding: 4rem 1.5rem; }
-  .svc-top, .pricing-top { grid-template-columns: 1fr; gap: 2rem; }
-  .svc-grid, .p-grid, .cred-grid, .stats-grid { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: 1rem; text-align: center; }
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
@@ -573,15 +292,11 @@ footer {
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a class="nav-logo" href="#">Věnceslav <span>Chumchal</span></a>
+  <a class="nav-logo" href="#">V_<span>CHUMCHAL</span></a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#audience">Who It's For</a></li>
-    <li><a href="#process">How It Works</a></li>
+    <li><a href="#proof">Proof</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#credentials">Credentials</a></li>
     <li><a href="#contact" class="nav-cta">Book a Call</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -589,706 +304,15 @@ footer {
   </button>
 </nav>
 
-<!-- Mobile Drawer -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">About</a>
   <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#results" onclick="closeMenu()">Results</a>
-  <a href="#audience" onclick="closeMenu()">Who It's For</a>
-  <a href="#process" onclick="closeMenu()">How It Works</a>
+  <a href="#proof" onclick="closeMenu()">Proof</a>
   <a href="#pricing" onclick="closeMenu()">Pricing</a>
-  <a href="#credentials" onclick="closeMenu()">Credentials</a>
   <a href="#contact" class="m-cta" onclick="closeMenu()">Book a Call</a>
 </div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">EU AI Expert · Based in Asia · Manufacturing-First</div>
-    <h1 class="hero-name">
-      <strong>Real AI.</strong><br>
-      <strong>Real Skills.</strong><br>
-      <em>Real Results.</em>
-    </h1>
-    <p class="hero-sub">
-      I lead an EU AI lab delivering 30+ projects a year — and I'm based in Asia, available on-site for manufacturing, coding, and productivity work.
-    </p>
-    <p class="hero-philosophy">"I teach you how to bake. I don't just sell you the loaf."</p>
-    <div class="hero-actions">
-      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book a Free Discovery Call</a>
-      <a href="#services" class="btn-outline">See How I Can Help</a>
-    </div>
-    <div class="hero-meta">
-      <span class="hero-meta-item"><a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">AI Lab Head · CXI / TU Liberec</a></span>
-      <span class="hero-meta-item">Manufacturing · Coding · Productivity</span>
-      <span class="hero-meta-item">EU AI Act / GDPR-Compliant</span>
-    </div>
-  </div>
-</section>
-<hr class="div">
+<!-- SCRIPTS -->
 
-<!-- ABOUT -->
-<section id="about">
-  <div>
-    <div class="eyebrow">About</div>
-    <h2 class="h2">From CNC machinist to AI Lab Lead — I've earned my perspective.</h2>
-    <blockquote class="about-quote">
-      "The best AI advice comes from someone who has actually built and shipped AI systems."
-    </blockquote>
-    <div class="about-body">
-      <p>I'm Věnceslav Chumchal. I lead the AI Lab at the <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec</a> — a cross-functional team of 10–15 ML engineers, LLM specialists, and software engineers delivering 30+ applied AI projects a year, from research to production-grade software.</p>
-      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="subtle">IPF Industry</a> — an international trade and manufacturing business dealing in real, physical goods across the EEA, Middle East, and India.</p>
-      <p>I work at the intersection of deep technical execution and strategic clarity. When I consult, I don't hand you a slide deck and disappear — I transfer the skills and thinking so you can keep building after I'm gone.</p>
-      <p>I'm based in Southeast Asia — close enough to be on your factory floor next week, with the EU credentials and EU AI Act / GDPR delivery practices that international clients require. For larger engagements I bring in specialists from a trusted network of ML researchers and engineers.</p>
-    </div>
-    <div class="chip-row">
-      <span class="chip">Based in Asia · EU-Expert</span>
-      <span class="chip">EU AI Act / GDPR</span>
-      <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="chip">AI Lab Head · CXI / TU Liberec</a>
-      <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="chip">Co-Founder · IPF Industry</a>
-      <span class="chip">MSc AI · Univ. Lübeck</span>
-    </div>
-  </div>
-  <div>
-    <div class="about-img-wrap">
-      <img src="profile_foto.jpg" alt="Věnceslav Chumchal" loading="lazy" decoding="async" />
-      <div class="about-img-deco"></div>
-      <div class="about-img-bar">
-        <div class="about-bar-name">Věnceslav Chumchal</div>
-        <div class="about-bar-role">AI Consultant · Based in Asia · EU AI Lab Lead</div>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-<!-- PHILOSOPHY STRIP -->
-<div id="philosophy">
-  <div class="phil-card">
-    <div class="phil-num">01</div>
-    <span class="phil-icon">🍞</span>
-    <div class="phil-title">Skills, Not Dependencies</div>
-    <p class="phil-desc">Most consultants create ongoing dependency — and like it that way. My goal is the opposite: every engagement ends with you owning the capability, the thinking, and the confidence to keep building without me.</p>
-  </div>
-  <div class="phil-card">
-    <div class="phil-num">02</div>
-    <span class="phil-icon">🏭</span>
-    <div class="phil-title">Practitioner, Not Theorist</div>
-    <p class="phil-desc">Everything I teach, I do. I lead an AI lab delivering real AI systems to industry clients. My advice is grounded in what actually works in production — not what sounds good in a presentation.</p>
-  </div>
-  <div class="phil-card">
-    <div class="phil-num">03</div>
-    <span class="phil-icon">🌏</span>
-    <div class="phil-title">EU Discipline, Asia Proximity</div>
-    <p class="phil-desc">European credentials and EU AI Act / GDPR-compliant delivery — combined with on-the-ground presence in Asia. Most consultants offer one or the other; international clients need both. I show up at your factory and bring the regulatory rigor with me.</p>
-  </div>
-</div>
-<hr class="div">
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="svc-top">
-    <div>
-      <div class="eyebrow">Services</div>
-      <h2 class="h2">Three niches. One practitioner.</h2>
-    </div>
-    <p class="sub">Every engagement is built around what you actually need — your processes, your codebase, your industry. No templates. No generic slide decks.</p>
-  </div>
-  <div class="svc-grid">
-
-    <div class="svc-card">
-      <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')">
-        <div class="svc-bg-title">Manufacturing</div>
-      </div>
-      <div class="svc-body">
-        <div class="svc-num">01</div>
-        <div class="svc-region">AI for Manufacturing</div>
-        <h3 class="svc-title">AI for Manufacturing & Industry 4.0</h3>
-        <p class="svc-desc">Predictive maintenance, computer vision quality control, and Industry 4.0 readiness — delivered on-site at your facility. Grounded in 5+ years of applied ML in automotive, construction, and chemical engineering, plus a CNC machinist background that bridges the shop floor and the data layer. One recent electronics-sector pilot reduced incoming inspection labor by over 60% in 8 weeks.</p>
-        <div class="chip-wrap">
-          <span class="chip">On-Site Engagements</span>
-          <span class="chip">Industry 4.0</span>
-          <span class="chip">Predictive Maintenance</span>
-          <span class="chip">Quality Control (CV)</span>
-          <span class="chip">Process Optimisation</span>
-          <span class="chip">ML for Sensors</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80')">
-        <div class="svc-bg-title">Coding with AI</div>
-      </div>
-      <div class="svc-body">
-        <div class="svc-num">02</div>
-        <div class="svc-region">AI for Coding</div>
-        <h3 class="svc-title">Build Smarter with AI-Assisted Development</h3>
-        <p class="svc-desc">Take your team from prompting to engineering. Claude Code, Cursor, agentic workflows, and the engineering discipline that separates fragile AI-generated code from production systems: idempotency, deduplication, caching, and failure visibility. Teams typically reach confident agentic workflow deployment within 2 days of the workshop.</p>
-        <div class="chip-wrap">
-          <span class="chip">Claude Code</span>
-          <span class="chip">LLM Integration</span>
-          <span class="chip">RAG Systems</span>
-          <span class="chip">MLOps</span>
-          <span class="chip">Agentic Workflows</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80')">
-        <div class="svc-bg-title">Productivity</div>
-      </div>
-      <div class="svc-body">
-        <div class="svc-num">03</div>
-        <div class="svc-region">AI for Productivity</div>
-        <h3 class="svc-title">Automate Your Work Before Someone Else Does</h3>
-        <p class="svc-desc">A practical audit of what's worth automating (a minute every day vs. a work day per year) — then build the skills so your team can keep optimising independently. Workshops or implementation retainers. Most audits surface 3–5 automations that save 2+ hours per person per week.</p>
-        <div class="chip-wrap">
-          <span class="chip">Job Skill Audit</span>
-          <span class="chip">Workflow Automation</span>
-          <span class="chip">LLM Tools</span>
-          <span class="chip">AI Strategy</span>
-          <span class="chip">No-Code / Low-Code</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-<hr class="div">
-
-<!-- RESULTS -->
-<section id="results" style="background: var(--white);">
-  <div style="max-width:1100px; margin:0 auto;">
-    <div class="eyebrow">Outcomes</div>
-    <h2 class="h2">What this looks like in practice.</h2>
-    <p class="sub" style="max-width:560px;">
-      Results from manufacturing, coding, and productivity engagements. Client names withheld; industries and outcomes verified.
-    </p>
-    <div class="cred-grid" style="margin-top:3rem;">
-      <div class="cred-card">
-        <div class="cred-tag">Manufacturing · Electronics Assembly</div>
-        <div class="cred-title">60% reduction in incoming inspection labor</div>
-        <div class="cred-sub">Computer vision QC system deployed on a single assembly line. 8-week pilot. Baseline defect pass-through rate maintained; manual inspection headcount reallocated to higher-value tasks.</div>
-        <div class="cred-year">Engagement type: AI Pilot</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">Software Team · B2B SaaS</div>
-        <div class="cred-title">Team shipping AI features independently within 6 weeks</div>
-        <div class="cred-sub">2-day agentic workflow workshop followed by a 4-week implementation retainer. Team went from zero LLM integration experience to deploying a production RAG system with full CI/CD.</div>
-        <div class="cred-year">Engagement type: Workshop + Retainer</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">Operations · Manufacturing SME</div>
-        <div class="cred-title">12-page AI opportunity report delivered in 3 days</div>
-        <div class="cred-sub">Discovery Sprint at a 200-person factory. Report identified 4 viable AI use cases with cost-benefit estimates; client proceeded with predictive maintenance pilot as first priority.</div>
-        <div class="cred-year">Engagement type: AI Discovery Sprint</div>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-<!-- WHO IT'S FOR -->
-<section id="audience">
-  <div>
-    <div class="eyebrow">Who It's For</div>
-    <h2 class="h2">Built for people who want to understand and lead — not just use.</h2>
-    <p class="sub">On-site engagements across Asia and remote work elsewhere, conducted in English. A genuine interest in building capability — not just outsourcing a task.</p>
-    <ul class="aud-list">
-      <li>
-        <span class="aud-n">N°&nbsp;01</span>
-        <div><span class="aud-strong">Industrial &amp; Manufacturing Businesses</span>SME owners and operations leads who want to know exactly where AI can cut costs, reduce defects, or improve throughput — with a trusted technical partner to execute it.</div>
-      </li>
-      <li>
-        <span class="aud-n">N°&nbsp;02</span>
-        <div><span class="aud-strong">Software Developers &amp; Engineers</span>Developers who want to move from "prompting AI" to building serious AI-powered systems and agentic workflows with proper engineering discipline.</div>
-      </li>
-      <li>
-        <span class="aud-n">N°&nbsp;03</span>
-        <div><span class="aud-strong">Knowledge Workers &amp; Professionals</span>People in roles that are changing fast — who want to identify what to automate, build the skills to do it themselves, and stay ahead of their field.</div>
-      </li>
-      <li>
-        <span class="aud-n">N°&nbsp;04</span>
-        <div><span class="aud-strong">Entrepreneurs &amp; Founders</span>Founders who need an honest technical voice on AI strategy — someone who has actually co-founded and scaled a company alongside an AI career.</div>
-      </li>
-    </ul>
-  </div>
-  <div>
-    <div class="eyebrow" style="margin-bottom:2rem;">Track Record</div>
-    <div class="stats-grid">
-      <div class="stat-cell">
-        <div class="stat-num">30<span>+</span></div>
-        <div class="stat-label">AI Projects Delivered / Year</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">15</div>
-        <div class="stat-label">Engineers & Specialists Led</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">5<span>+</span></div>
-        <div class="stat-label">Years Applied AI Research</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Published Research Papers</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">2<span>x</span></div>
-        <div class="stat-label">EU AI Grant Co-Beneficiary</div>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-<!-- HOW IT WORKS -->
-<section id="process">
-  <div class="process-inner">
-    <div>
-      <div class="eyebrow">How It Works</div>
-      <h2 class="h2">No bureaucracy. Direct path from problem to capability.</h2>
-      <p class="sub">Every engagement starts with understanding your actual situation — then building the most direct path to your goal, with the skills to sustain it.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">01</div>
-          <div>
-            <div class="step-title">Free Discovery Call (20 min)</div>
-            <p class="step-desc">You share your challenge, context, and goals. I'll tell you directly whether I can help — no obligation. If we're a fit, the next step is usually a paid AI Discovery Sprint to scope the work properly.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">02</div>
-          <div>
-            <div class="step-title">AI Discovery Sprint (€4,500, 3 days)</div>
-            <p class="step-desc">On-site visit, stakeholder interviews, and a written 12-page AI opportunity report with prioritized next steps. The fee is credited toward any follow-on engagement within 90 days.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">03</div>
-          <div>
-            <div class="step-title">Pilot, Workshop, or Retainer</div>
-            <p class="step-desc">Fixed-scope pilot for manufacturing AI; on-site workshop for coding or productivity teams; or quarterly retainer for ongoing advisory. Whatever fits the problem we identified together.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">04</div>
-          <div>
-            <div class="step-title">You Own the Result</div>
-            <p class="step-desc">Documentation, implementation guides, and async support throughout. The goal is always that your team can continue and improve independently after we wrap up.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="process-right">
-      <div class="deliverables-label">What You'll Leave With</div>
-      <ul class="deliverable-list">
-        <li>A clear audit of where AI creates real value in your context</li>
-        <li>Hands-on implementation of at least one working system or workflow</li>
-        <li>The mental models to evaluate any AI tool or vendor claim</li>
-        <li>Documentation and guides you can share with your team</li>
-        <li>Async email / WhatsApp support between and after sessions</li>
-      </ul>
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="pricing-top">
-    <div>
-      <div class="eyebrow">Engagements</div>
-      <h2 class="h2">Productized engagements. Fixed scope. Predictable cost.</h2>
-    </div>
-    <p class="sub">Fixed-price packages designed for SMEs adopting AI. All rates in EUR; on-site work in Asia included in package prices. Custom enterprise scopes on request.</p>
-  </div>
-  <div class="p-grid">
-    <div class="p-card">
-      <div class="p-name">AI for Manufacturing</div>
-      <div class="p-price">From €25,000</div>
-      <div class="p-period">6–12 week pilot · on-site visits included</div>
-      <div class="p-desc">Predictive maintenance, quality control, or Industry 4.0 readiness pilot — one production-ready model on a single line or machine. Day rate from €1,500 · Retainer from €5,000/month.</div>
-      <ul class="p-feats">
-        <li>Manufacturing readiness assessment (5–7 days)</li>
-        <li>Pilot model on real production data</li>
-        <li>On-site deployment &amp; validation</li>
-        <li>ROI report with measured baseline</li>
-        <li>30-day post-deployment support</li>
-      </ul>
-      <a href="#contact" class="btn-primary">Discuss Your Manufacturing Pilot</a>
-    </div>
-    <div class="p-card feat">
-      <div class="p-pop">Front-Door Product</div>
-      <div class="p-name">AI Discovery Sprint</div>
-      <div class="p-price">€4,500</div>
-      <div class="p-period">3 days · fixed scope</div>
-      <div class="p-desc">The first paid step. I diagnose where AI creates real value in your operation and deliver a 12-page opportunity report + executive presentation. Apply the fee toward any follow-on engagement within 90 days.</div>
-      <ul class="p-feats">
-        <li>1 on-site visit + stakeholder interviews</li>
-        <li>AI opportunity audit (manufacturing, coding, or operations)</li>
-        <li>12-page written report</li>
-        <li>Executive presentation</li>
-        <li>Roadmap with prioritized next engagement</li>
-      </ul>
-      <a href="#contact" class="btn-primary">Book Discovery Sprint</a>
-    </div>
-    <div class="p-card">
-      <div class="p-name">Workshops &amp; Retainers</div>
-      <div class="p-price">From €3,500</div>
-      <div class="p-period">Workshop · 1–2 days on-site</div>
-      <div class="p-desc">Hands-on workshops for dev teams (Claude Code, agentic workflows, AI-assisted development) or operations teams (workflow automation, AI tools selection). Coding day rate from €1,000 · Productivity day rate from €800. Retainers from €2,500/month.</div>
-      <ul class="p-feats">
-        <li>1–2 day on-site workshop (15–30 participants)</li>
-        <li>Tailored to your stack and workflows</li>
-        <li>Hands-on labs and live builds</li>
-        <li>Custom playbook and follow-up support</li>
-        <li>Optional 1-month implementation retainer</li>
-      </ul>
-      <a href="#contact" class="btn-primary">Discuss a Workshop</a>
-    </div>
-  </div>
-  <p class="p-note">Quarterly retainers from €12,000 (3 months, 4 hours/week + 2 on-site visits). Day rates and custom scopes on request. Travel beyond standard on-site visits billed at cost.</p>
-</section>
-<hr class="div">
-
-<!-- FAQ -->
-<section id="faq" style="background: var(--cream);">
-  <div style="max-width: 760px; margin: 0 auto;">
-    <div class="eyebrow">Common Questions</div>
-    <h2 class="h2">Answers before the call.</h2>
-
-    <div style="margin-top: 3rem; border-top: 1px solid var(--border);">
-
-      <details style="border-bottom: 1px solid var(--border); padding: 1.8rem 0;">
-        <summary style="font-family: var(--serif); font-size: 1.1rem;
-                        cursor: pointer; list-style: none;
-                        display: flex; justify-content: space-between; align-items: center;">
-          Are you actually available on-site next week?
-          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
-        </summary>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
-                  line-height: 1.85; font-weight: 300;">
-          Yes — I'm based in Southeast Asia and travel across the region regularly.
-          Typical lead time for an on-site visit is 1–2 weeks from confirmed engagement.
-          Remote kickoffs can start within days. The Discovery Sprint includes one on-site day
-          within the 3-day scope.
-        </p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--border); padding: 1.8rem 0;">
-        <summary style="font-family: var(--serif); font-size: 1.1rem;
-                        cursor: pointer; list-style: none;
-                        display: flex; justify-content: space-between; align-items: center;">
-          We tried AI tools before and they didn't stick. Why would this be different?
-          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
-        </summary>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
-                  line-height: 1.85; font-weight: 300;">
-          Most AI tool deployments fail because they're imposed on a team without building
-          understanding. Every engagement here is built around transferring the thinking,
-          not just the tool. Your team will understand why the system works — and be able
-          to fix it, extend it, or replace it when needed. That's what "skills, not
-          dependencies" means in practice.
-        </p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--border); padding: 1.8rem 0;">
-        <summary style="font-family: var(--serif); font-size: 1.1rem;
-                        cursor: pointer; list-style: none;
-                        display: flex; justify-content: space-between; align-items: center;">
-          Our production data is messy — will that be a problem?
-          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
-        </summary>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
-                  line-height: 1.85; font-weight: 300;">
-          It's the norm. The Discovery Sprint includes a data readiness assessment —
-          we'll identify what you have, what you need, and what's actually required
-          for each use case. Often the most valuable early output is a clear data
-          collection strategy, not an AI model. We don't start building until
-          the data foundation is sound.
-        </p>
-      </details>
-
-      <details style="padding: 1.8rem 0;">
-        <summary style="font-family: var(--serif); font-size: 1.1rem;
-                        cursor: pointer; list-style: none;
-                        display: flex; justify-content: space-between; align-items: center;">
-          What happens after the engagement ends?
-          <span style="color:var(--red); font-size:1.3rem; flex-shrink:0; display: inline-block; transition: transform 0.3s;">+</span>
-        </summary>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-muted);
-                  line-height: 1.85; font-weight: 300;">
-          Every engagement ends with full documentation, implementation guides, and
-          30 days of async support (email/WhatsApp). The goal is always that your team
-          owns the result and can continue without me. For clients who want ongoing
-          support, quarterly retainers start at €12,000 (3 months, 4 hours/week,
-          2 on-site visits included).
-        </p>
-      </details>
-
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-<!-- CREDENTIALS -->
-<section id="credentials">
-  <div class="cred-inner">
-    <div class="eyebrow">Credentials</div>
-    <h2 class="h2">Grounded in real research and practice.</h2>
-    <p class="sub">I'm an active practitioner — not just a consultant. What I advise reflects what I do daily at a European research institution and as a co-founder.</p>
-    <div class="cred-grid">
-      <div class="cred-card">
-        <div class="cred-tag">Current Role</div>
-        <div class="cred-title"><a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener" class="subtle">Head of AI Lab — Institute for Nanomaterials, Advanced Technologies &amp; Innovation</a></div>
-        <div class="cred-sub">Leading 10–15 ML engineers and LLM specialists. 30+ projects/year across research and industry.</div>
-        <div class="cred-year">Jan 2025 – Present</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">Co-Founder</div>
-        <div class="cred-title"><a href="https://www.ipf-industry.com/" target="_blank" rel="noopener" class="subtle">IPF Industry s.r.o.</a></div>
-        <div class="cred-sub">International trade and manufacturing of physical goods — production, shipping, customs, cross-border markets. Fully self-financed, 100% ownership retained. EEA, Middle East, India.</div>
-        <div class="cred-year">Sept 2023 – Present</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">Education</div>
-        <div class="cred-title">MSc Artificial Intelligence — Universität zu Lübeck</div>
-        <div class="cred-sub">Pursuing alongside AI Lab leadership.</div>
-        <div class="cred-year">March 2026 –</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">Research Co-author</div>
-        <div class="cred-title">3 Published &amp; Preprint Research Papers</div>
-        <div class="cred-sub">Applied numerical ML and materials science (Physical Review B, APS; arXiv). <a href="https://arxiv.org/abs/2501.03377" target="_blank" rel="noopener" class="subtle">View on arXiv →</a></div>
-        <div class="cred-year">2023 – 2025</div>
-      </div>
-      <div class="cred-card">
-        <div class="cred-tag">EU Grants · Certifications · Compliance</div>
-        <div class="cred-title">EU AI Act / GDPR-Compliant Delivery · EDIH Northern &amp; Eastern Bohemia · NVIDIA DLI · DeepLearning.AI</div>
-        <div class="cred-sub">Digital Europe Programme · ML/AI for SMEs · Predictive Maintenance · Computer Vision · ML Specialisation</div>
-        <div class="cred-year">2022 – Active</div>
-      </div>
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-<!-- NOT FOR SECTION -->
-<section id="not-for" style="background: var(--ink); padding: 5rem 3.5rem;">
-  <div style="max-width: 1100px; margin: 0 auto;
-              display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
-    <div>
-      <div class="eyebrow" style="color:rgba(255,255,255,0.4);">Not a fit</div>
-      <h2 class="h2" style="color: var(--white);">This is not for everyone.</h2>
-      <p style="color:rgba(255,255,255,0.5); font-size:0.97rem;
-                line-height:1.85; font-weight:300; max-width:480px;">
-        I work with a small number of clients at a time.
-        To make sure the engagement is right for both sides, here is what this is not.
-      </p>
-    </div>
-    <div>
-      <ul style="list-style:none; padding:0; margin:0;">
-        <li style="padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,0.07);
-                   color:rgba(255,255,255,0.65); font-size:0.92rem; line-height:1.7;
-                   display:flex; gap:1rem; align-items:baseline;">
-          <span style="color:var(--red); flex-shrink:0;">✕</span>
-          <span><strong style="color:var(--white);">Not strategy decks.</strong>
-            If you want a beautifully formatted slide deck with no implementation plan,
-            there are firms for that. Every engagement here ends with working output.</span>
-        </li>
-        <li style="padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,0.07);
-                   color:rgba(255,255,255,0.65); font-size:0.92rem; line-height:1.7;
-                   display:flex; gap:1rem; align-items:baseline;">
-          <span style="color:var(--red); flex-shrink:0;">✕</span>
-          <span><strong style="color:var(--white);">Not vendor selection reports.</strong>
-            I'm not paid by any software vendor. My job is to find what works for your
-            operation — including telling you when AI isn't the right answer yet.</span>
-        </li>
-        <li style="padding:1.1rem 0; border-bottom:1px solid rgba(255,255,255,0.07);
-                   color:rgba(255,255,255,0.65); font-size:0.92rem; line-height:1.7;
-                   display:flex; gap:1rem; align-items:baseline;">
-          <span style="color:var(--red); flex-shrink:0;">✕</span>
-          <span><strong style="color:var(--white);">Not AI for the press release.</strong>
-            If the goal is to say you're "AI-powered" without changing how you operate,
-            this isn't the right engagement.</span>
-        </li>
-        <li style="padding:1.1rem 0; color:rgba(255,255,255,0.65);
-                   font-size:0.92rem; line-height:1.7;
-                   display:flex; gap:1rem; align-items:baseline;">
-          <span style="color:var(--red); flex-shrink:0;">✕</span>
-          <span><strong style="color:var(--white);">Not for operations below USD 5M revenue.</strong>
-            The engagement model and pricing are designed for manufacturers who have
-            real data, real processes, and real stakes on outcomes.</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-<hr class="div">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-bg"></div>
-  <div class="contact-inner">
-    <div>
-      <div class="eyebrow gold">Contact</div>
-      <h2 class="h2">Ready to start? Let's talk.</h2>
-      <p class="sub">Reach me via email or WhatsApp. I reply within 24 hours and we'll find a time that works across any timezone.</p>
-      <div class="c-channels">
-        <a href="mailto:venceslav.ch@outlook.com" class="c-row">
-          <div class="c-icon">✉</div>
-          <div>
-            <div class="c-label">Email</div>
-            <div class="c-val">venceslav.ch@outlook.com</div>
-          </div>
-        </a>
-        <a href="https://wa.me/420777124827" target="_blank" class="c-row">
-          <div class="c-icon">💬</div>
-          <div>
-            <div class="c-label">WhatsApp</div>
-            <div class="c-val">+420 777 124 827</div>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank" class="c-row">
-          <div class="c-icon" style="font-family:sans-serif;font-size:0.8rem;font-weight:700;">in</div>
-          <div>
-            <div class="c-label">LinkedIn</div>
-            <div class="c-val">Věnceslav Chumchal</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div>
-      <div class="c-card">
-        <div class="c-card-head">Not sure where to start?<br>The first call is free.</div>
-        <div class="c-card-body">A free 20-minute call to discuss your situation. If we're a fit, the typical next step is a €4,500 AI Discovery Sprint — fixed scope, 3 days, with a written report you keep regardless of what comes next. The fee is credited toward any follow-on engagement within 90 days.</div>
-        <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Request Discovery Call</a>
-        <div class="c-tz">Based in Asia · Mon–Fri · On-site visits across the region</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="ft-copy">© 2026 Věnceslav Chumchal · AI Consultancy</div>
-  <div class="ft-links">
-    <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank">LinkedIn</a>
-    <a href="https://arxiv.org/abs/2501.03377" target="_blank">Research</a>
-    <a href="mailto:venceslav.ch@outlook.com">Email</a>
-    <a href="https://wa.me/420777124827" target="_blank">WhatsApp</a>
-  </div>
-</footer>
-
-<!-- ============================================================
-     Vercel Analytics (replaces: import { Analytics } from "@vercel/analytics/next")
-     Tracks pageviews and web vitals automatically.
-     Vercel injects /_vercel/insights/script.js on deployment.
-============================================================ -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
-<!-- ============================================================
-     Vercel Speed Insights (replaces: import { SpeedInsights } from "@vercel/speed-insights/next")
-     Measures Core Web Vitals (LCP, FID, CLS, TTFB, INP) per route.
-     Vercel injects /_vercel/speed-insights/script.js on deployment.
-============================================================ -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
-<script>
-  // ── Nav scroll shadow ────────────────────────────────────────
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  // ── Mobile hamburger menu ────────────────────────────────────
-  const btn = document.getElementById('hamburger');
-  const menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    menu.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  });
-  function closeMenu() {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  // ── Custom Analytics Event Tracking ─────────────────────────
-  // Fires va() events so you can see them in the Vercel Analytics
-  // dashboard under "Custom Events". All non-blocking.
-
-  function trackEvent(name, props) {
-    try { va('event', Object.assign({ name: name }, props || {})); } catch(e) {}
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-
-    // Track all CalendarBridge booking clicks (hero + contact card)
-    document.querySelectorAll('a[href*="calendarbridge.com"]').forEach(function (el) {
-      el.addEventListener('click', function () {
-        trackEvent('booking_click', {
-          source: el.closest('#hero') ? 'hero' : 'contact_card'
-        });
-      });
-    });
-
-    // Track "Book Now" pricing card clicks (scroll to contact)
-    document.querySelectorAll('#pricing .btn-primary').forEach(function (el) {
-      el.addEventListener('click', function () {
-        var card = el.closest('.p-card');
-        var tier = card ? (card.querySelector('.p-name') || {}).textContent : 'unknown';
-        trackEvent('pricing_cta_click', { tier: (tier || '').trim() });
-      });
-    });
-
-    // Track "Explore Services" / "See How I Can Help" secondary CTA
-    document.querySelectorAll('a.btn-outline').forEach(function (el) {
-      el.addEventListener('click', function () {
-        trackEvent('secondary_cta_click', { label: el.textContent.trim() });
-      });
-    });
-
-    // Track nav link clicks (which section gets the most interest)
-    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function (el) {
-      el.addEventListener('click', function () {
-        trackEvent('nav_click', { label: el.textContent.trim() });
-      });
-    });
-
-    // Track contact channel clicks (email / WhatsApp / LinkedIn)
-    document.querySelectorAll('.c-row').forEach(function (el) {
-      el.addEventListener('click', function () {
-        var label = (el.querySelector('.c-label') || {}).textContent || '';
-        trackEvent('contact_channel_click', { channel: label.trim() });
-      });
-    });
-
-    // Track scroll depth milestones (25 / 50 / 75 / 100%)
-    var depthFired = {};
-    window.addEventListener('scroll', function () {
-      var scrolled = window.scrollY + window.innerHeight;
-      var total = document.documentElement.scrollHeight;
-      var pct = Math.round((scrolled / total) * 100);
-      [25, 50, 75, 100].forEach(function (milestone) {
-        if (pct >= milestone && !depthFired[milestone]) {
-          depthFired[milestone] = true;
-          trackEvent('scroll_depth', { percent: milestone });
-        }
-      });
-    }, { passive: true });
-
-  });
-</script>
 </body>
 </html>
