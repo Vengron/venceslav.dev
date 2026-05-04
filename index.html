@@ -648,6 +648,182 @@ nav.scrolled {
   margin-top: 0.6rem;
   letter-spacing: 0.06em;
 }
+
+/* ── PRICING ── */
+#pricing {
+  background: var(--bg);
+  padding: 7rem 3.5rem;
+}
+.pricing-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  align-items: stretch;
+}
+.p-card {
+  background: var(--bg-card);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.p-card.feat { background: var(--red); }
+.p-card.feat .p-name,
+.p-card.feat .p-period,
+.p-card.feat .p-desc,
+.p-card.feat .p-process-step { color: rgba(255,255,255,0.8); }
+.p-card.feat .p-feats li { color: rgba(255,255,255,0.85); }
+.p-card.feat .p-feats li::before { color: rgba(255,255,255,0.7); }
+.p-card.feat .btn-primary { background: var(--white); color: var(--red); }
+.p-card.feat .btn-primary:hover { background: rgba(255,255,255,0.9); }
+.p-pop {
+  position: absolute;
+  top: 1.2rem; right: 1.2rem;
+  background: rgba(255,255,255,0.18);
+  color: var(--white);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+.p-name {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.p-price {
+  font-family: var(--display);
+  font-size: 2.6rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.p-period {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+}
+.p-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+/* Embedded process steps */
+.p-process {
+  margin-bottom: 1.4rem;
+  padding: 0.8rem;
+  background: rgba(0,0,0,0.15);
+  border-left: 2px solid rgba(255,255,255,0.12);
+}
+.p-process-label {
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.p-process-step {
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 0.2rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+.p-process-step::before {
+  content: '→';
+  color: var(--red);
+  font-size: 0.62rem;
+  flex-shrink: 0;
+}
+.p-card.feat .p-process { background: rgba(0,0,0,0.12); border-left-color: rgba(255,255,255,0.2); }
+.p-feats {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+.p-feats li {
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0.3rem 0;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.p-feats li::before {
+  content: '✓';
+  color: var(--red);
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.p-card .btn-primary { text-align: center; }
+.p-note {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── FAQ (slim, below pricing) ── */
+#faq { padding: 3rem 3.5rem 5rem; background: var(--bg); }
+.faq-inner { max-width: 720px; margin: 0 auto; }
+.faq-title {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+details {
+  border-top: 1px solid var(--border);
+}
+details:last-child { border-bottom: 1px solid var(--border); }
+summary {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--white);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+}
+summary::-webkit-details-marker { display: none; }
+.faq-icon {
+  color: var(--red);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+details[open] .faq-icon { transform: rotate(45deg); }
+.faq-body {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.85;
+  padding-bottom: 1.4rem;
+}
 </style>
 </head>
 <body>
@@ -888,6 +1064,108 @@ nav.scrolled {
       <div class="cred-sub">Digital Europe Programme · ML/AI for SMEs · Predictive Maintenance · Computer Vision</div>
       <div class="cred-year">2022 – Active</div>
     </div>
+  </div>
+</section>
+<hr class="div">
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header reveal">
+    <div>
+      <div class="eyebrow">Engagements</div>
+      <h2 class="h2">FIXED SCOPE.<br>PREDICTABLE COST.</h2>
+    </div>
+    <p class="sub">Fixed-price packages designed for SMEs adopting AI. All rates in EUR. On-site work in Asia included in package prices.</p>
+  </div>
+  <div class="p-grid">
+
+    <div class="p-card reveal">
+      <div class="p-name">AI for Manufacturing</div>
+      <div class="p-price">From €25,000</div>
+      <div class="p-period">6–12 week pilot · on-site visits included</div>
+      <div class="p-desc">One production-ready model on a single line or machine. Predictive maintenance, quality control, or Industry 4.0 readiness. Day rate from €1,500 · Retainer from €5,000/month.</div>
+      <div class="p-process">
+        <div class="p-process-label">How it works</div>
+        <div class="p-process-step">Free 20-min call → scoped Manufacturing pilot</div>
+        <div class="p-process-step">On-site deployment → you own the model</div>
+      </div>
+      <ul class="p-feats">
+        <li>Manufacturing readiness assessment (5–7 days)</li>
+        <li>Pilot model trained on real production data</li>
+        <li>On-site deployment &amp; validation</li>
+        <li>ROI report with measured baseline</li>
+        <li>30-day post-deployment support</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Discuss Your Pilot</a>
+    </div>
+
+    <div class="p-card feat reveal">
+      <div class="p-pop">Front-Door Product</div>
+      <div class="p-name">AI Discovery Sprint</div>
+      <div class="p-price">€4,500</div>
+      <div class="p-period">3 days · fixed scope</div>
+      <div class="p-desc">The first paid step. I diagnose where AI creates real value in your operation and deliver a 12-page opportunity report + executive presentation. Fee credited toward any follow-on engagement within 90 days.</div>
+      <div class="p-process">
+        <div class="p-process-label">How it works</div>
+        <div class="p-process-step">Free 20-min call → confirm fit</div>
+        <div class="p-process-step">3-day Sprint → report + roadmap you keep</div>
+      </div>
+      <ul class="p-feats">
+        <li>1 on-site visit + stakeholder interviews</li>
+        <li>AI opportunity audit</li>
+        <li>12-page written report</li>
+        <li>Executive presentation</li>
+        <li>Prioritized roadmap for next engagement</li>
+      </ul>
+      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Discovery Sprint</a>
+    </div>
+
+    <div class="p-card reveal">
+      <div class="p-name">Workshops &amp; Retainers</div>
+      <div class="p-price">From €3,500</div>
+      <div class="p-period">1–2 day workshop · on-site</div>
+      <div class="p-desc">Hands-on workshops for dev teams (Claude Code, agentic workflows) or operations teams (workflow automation). Coding day rate from €1,000 · Productivity day rate from €800 · Retainers from €2,500/month.</div>
+      <div class="p-process">
+        <div class="p-process-label">How it works</div>
+        <div class="p-process-step">Free 20-min call → scoped workshop</div>
+        <div class="p-process-step">On-site lab day → you ship autonomously</div>
+      </div>
+      <ul class="p-feats">
+        <li>1–2 day on-site workshop (up to 30 participants)</li>
+        <li>Tailored to your stack and workflows</li>
+        <li>Hands-on labs and live builds</li>
+        <li>Custom playbook and follow-up support</li>
+        <li>Optional 1-month implementation retainer</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Discuss a Workshop</a>
+    </div>
+
+  </div>
+  <p class="p-note">Quarterly retainers from €12,000 (3 months, 4 hrs/week + 2 on-site visits). Day rates and custom scopes on request. Travel beyond standard on-site visits billed at cost.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner reveal">
+    <div class="faq-title">COMMON QUESTIONS</div>
+    <details>
+      <summary>
+        Are you actually available on-site next week?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Yes — I'm based in Southeast Asia and travel across the region regularly. Typical lead time for an on-site visit is 1–2 weeks from confirmed engagement. Remote kickoffs can start within days. The Discovery Sprint includes one on-site day within the 3-day scope.
+      </div>
+    </details>
+    <details>
+      <summary>
+        We tried AI tools before and they didn't stick. Why would this be different?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Most AI tool deployments fail because they're imposed on a team without building understanding. Every engagement here is built around transferring the thinking, not just the tool. Your team will understand why the system works — and be able to fix it, extend it, or replace it. That's what "skills, not dependencies" means in practice.
+      </div>
+    </details>
   </div>
 </section>
 <hr class="div">
