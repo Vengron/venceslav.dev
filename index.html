@@ -824,6 +824,115 @@ details[open] .faq-icon { transform: rotate(45deg); }
   line-height: 1.85;
   padding-bottom: 1.4rem;
 }
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--bg-deep);
+  padding: 7rem 3.5rem;
+  position: relative;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+#contact .eyebrow { color: var(--red); }
+#contact .sub { color: var(--muted); max-width: 380px; }
+/* Channel rows */
+.c-channels { margin-top: 2.5rem; display: flex; flex-direction: column; }
+.c-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: gap 0.25s;
+}
+.c-row:first-child { border-top: 1px solid var(--border); }
+.c-row:hover { gap: 2rem; }
+.c-icon {
+  width: 42px; height: 42px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.c-row:hover .c-icon { background: var(--red); border-color: var(--red); }
+.c-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.c-val {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+}
+/* Booking card */
+.c-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.8rem;
+}
+.c-card-head {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.c-card-body {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 1.8rem;
+}
+.c-card .btn-primary { width: 100%; text-align: center; }
+.c-tz {
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+  padding: 1.6rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ft-copy {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+}
+.ft-links { display: flex; gap: 2rem; }
+.ft-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 700;
+}
+.ft-links a:hover { color: var(--red); }
 </style>
 </head>
 <body>
@@ -1169,6 +1278,57 @@ details[open] .faq-icon { transform: rotate(45deg); }
   </div>
 </section>
 <hr class="div">
+
+<!-- CONTACT -->
+<section id="contact" class="grid-overlay">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="eyebrow">Contact</div>
+      <h2 class="h2">READY TO START?<br>LET'S TALK.</h2>
+      <p class="sub">I reply within 24 hours. Based in Asia — Mon–Fri. On-site visits across the region.</p>
+      <div class="c-channels">
+        <a href="mailto:venceslav.ch@outlook.com" class="c-row">
+          <div class="c-icon">✉</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val">venceslav.ch@outlook.com</div>
+          </div>
+        </a>
+        <a href="https://wa.me/420777124827" target="_blank" class="c-row">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp</div>
+            <div class="c-val">+420 777 124 827</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank" class="c-row">
+          <div class="c-icon">in</div>
+          <div>
+            <div class="c-label">LinkedIn</div>
+            <div class="c-val">Věnceslav Chumchal</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="c-card reveal">
+      <div class="c-card-head">NOT SURE WHERE<br>TO START?<br>THE FIRST CALL IS FREE.</div>
+      <div class="c-card-body">A free 20-minute call to discuss your situation. If we're a fit, the typical next step is the €4,500 AI Discovery Sprint — fixed scope, 3 days, written report you keep regardless of what comes next. The fee is credited toward any follow-on engagement within 90 days.</div>
+      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Discovery Call →</a>
+      <div class="c-tz">Based in Asia · Mon–Fri · On-site visits across the region</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-copy">© 2026 Věnceslav Chumchal · AI Consultancy</div>
+  <div class="ft-links">
+    <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank">LinkedIn</a>
+    <a href="https://arxiv.org/abs/2501.03377" target="_blank">Research</a>
+    <a href="mailto:venceslav.ch@outlook.com">Email</a>
+    <a href="https://wa.me/420777124827" target="_blank">WhatsApp</a>
+  </div>
+</footer>
 
 <!-- SCRIPTS -->
 
