@@ -372,6 +372,88 @@ nav.scrolled {
   color: var(--muted);
   line-height: 1.5;
 }
+
+/* ── ABOUT ── */
+#about {
+  background: var(--bg-deep);
+  padding: 7rem 3.5rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-text .h2 { margin-bottom: 1.5rem; }
+.about-body {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.9;
+}
+.about-body p + p { margin-top: 0.9rem; }
+.about-body a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.2);
+  transition: color 0.2s;
+}
+.about-body a:hover { color: var(--white); }
+/* Philosophy strip */
+.phil-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.phil-item {
+  padding: 1.4rem 1rem 1.4rem 0;
+  border-right: 1px solid var(--border);
+}
+.phil-item:last-child { border-right: none; padding-right: 0; }
+.phil-item:first-child { padding-left: 0; }
+.phil-icon { font-size: 1.1rem; margin-bottom: 0.4rem; display: block; }
+.phil-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.phil-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+/* Chip row */
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.8rem; }
+/* Photo */
+.about-photo { position: relative; overflow: hidden; }
+.about-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%) brightness(0.8);
+}
+.about-photo-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--red);
+  padding: 1.2rem 1.5rem;
+}
+.photo-name {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+}
+.photo-role {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
 </style>
 </head>
 <body>
@@ -431,6 +513,50 @@ nav.scrolled {
     <div class="hero-metric">
       <div class="metric-num">EU</div>
       <div class="metric-label">AI Act &amp;<br>GDPR Compliant</div>
+    </div>
+  </div>
+</section>
+<hr class="div">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <div class="eyebrow">About</div>
+    <h2 class="h2">FROM CNC MACHINIST<br>TO AI LAB LEAD.</h2>
+    <div class="about-body">
+      <p>I'm Věnceslav Chumchal. I lead the AI Lab at the <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener">Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec</a> — a team of 10–15 ML engineers and LLM specialists delivering 30+ applied AI projects a year, from research to production software.</p>
+      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener">IPF Industry</a> — an international trade and manufacturing company operating across the EEA, Middle East, and India.</p>
+      <p>I'm based in Southeast Asia — on your factory floor next week, with EU credentials and EU AI Act / GDPR delivery practices that international clients require. Every engagement ends with your team owning the capability. I don't create dependencies.</p>
+    </div>
+    <div class="phil-strip">
+      <div class="phil-item">
+        <span class="phil-icon">🍞</span>
+        <div class="phil-title">Skills, Not Dependencies</div>
+        <div class="phil-desc">You own the capability when I leave. That's the goal.</div>
+      </div>
+      <div class="phil-item">
+        <span class="phil-icon">🏭</span>
+        <div class="phil-title">Practitioner, Not Theorist</div>
+        <div class="phil-desc">Everything I teach, I do. In production. Today.</div>
+      </div>
+      <div class="phil-item">
+        <span class="phil-icon">🌏</span>
+        <div class="phil-title">EU Discipline, Asia Proximity</div>
+        <div class="phil-desc">EU credentials. On-site across Asia. Both, not one.</div>
+      </div>
+    </div>
+    <div class="chip-row">
+      <span class="chip">AI Lab Head · CXI / TU Liberec</span>
+      <span class="chip">Co-Founder · IPF Industry</span>
+      <span class="chip">MSc AI · Univ. Lübeck</span>
+      <span class="chip">EU AI Act / GDPR</span>
+    </div>
+  </div>
+  <div class="about-photo reveal">
+    <img src="profile_foto.jpg" alt="Věnceslav Chumchal" loading="lazy" decoding="async" />
+    <div class="about-photo-bar">
+      <div class="photo-name">VĚNCESLAV CHUMCHAL</div>
+      <div class="photo-role">AI Lab Head · EU · Based in Asia</div>
     </div>
   </div>
 </section>
