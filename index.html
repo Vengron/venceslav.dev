@@ -454,6 +454,90 @@ nav.scrolled {
   text-transform: uppercase;
   color: rgba(255,255,255,0.65);
 }
+
+/* ── SERVICES ── */
+#services {
+  background: var(--bg);
+  padding: 7rem 3.5rem;
+}
+.svc-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.svc-card {
+  background: var(--bg-card);
+  overflow: hidden;
+  transition: background 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.svc-card:hover { background: #253050; }
+.svc-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.svc-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,32,53,0.2), rgba(26,32,53,0.75));
+}
+.svc-img-title {
+  position: absolute;
+  bottom: 1rem; left: 1.4rem;
+  z-index: 1;
+  font-family: var(--display);
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.svc-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+.svc-num {
+  font-family: var(--display);
+  font-size: 3rem;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.svc-for {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+.svc-title {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 0.7rem;
+  line-height: 1.1;
+}
+.svc-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+.svc-price {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  margin-bottom: 0.8rem;
+}
+.chip-wrap { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 </style>
 </head>
 <body>
@@ -558,6 +642,78 @@ nav.scrolled {
       <div class="photo-name">VĚNCESLAV CHUMCHAL</div>
       <div class="photo-role">AI Lab Head · EU · Based in Asia</div>
     </div>
+  </div>
+</section>
+<hr class="div">
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-header reveal">
+    <div>
+      <div class="eyebrow">Services</div>
+      <h2 class="h2">THREE NICHES.<br>ONE PRACTITIONER.</h2>
+    </div>
+    <p class="sub">Every engagement is built around your processes, your codebase, your industry. No templates. No generic slide decks.</p>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc-card reveal">
+      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')">
+        <div class="svc-img-title">Manufacturing</div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">01</div>
+        <div class="svc-for">For: Manufacturing SMEs, operations leads, plant managers.</div>
+        <h3 class="svc-title">AI for Manufacturing &amp; Industry 4.0</h3>
+        <p class="svc-desc">One electronics-sector pilot cut incoming inspection labor by 60% in 8 weeks. Predictive maintenance, computer vision QC, and Industry 4.0 readiness — deployed on your factory floor by someone who has stood on it.</p>
+        <div class="svc-price">From €25,000</div>
+        <div class="chip-wrap">
+          <span class="chip">On-Site Engagements</span>
+          <span class="chip">Predictive Maintenance</span>
+          <span class="chip">Quality Control (CV)</span>
+          <span class="chip">Industry 4.0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80')">
+        <div class="svc-img-title">Coding</div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">02</div>
+        <div class="svc-for">For: Software teams, CTOs, dev leads who want to build serious AI systems.</div>
+        <h3 class="svc-title">Build Smarter with AI-Assisted Development</h3>
+        <p class="svc-desc">Teams reach confident autonomous deployment within 2 days. Claude Code, agentic workflows, and the engineering discipline that separates production AI from fragile prompt-and-pray.</p>
+        <div class="svc-price">From €3,500</div>
+        <div class="chip-wrap">
+          <span class="chip">Claude Code</span>
+          <span class="chip">Agentic Workflows</span>
+          <span class="chip">LLM Integration</span>
+          <span class="chip">RAG Systems</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80')">
+        <div class="svc-img-title">Productivity</div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">03</div>
+        <div class="svc-for">For: Knowledge workers, founders, operations teams feeling the pressure.</div>
+        <h3 class="svc-title">Automate Your Work Before Someone Else Does</h3>
+        <p class="svc-desc">Most audits surface 3–5 automations saving 2+ hours per person per week. A practical audit of what's worth automating — then the skills so your team keeps optimising after I leave.</p>
+        <div class="svc-price">From €3,500</div>
+        <div class="chip-wrap">
+          <span class="chip">Workflow Automation</span>
+          <span class="chip">AI Strategy</span>
+          <span class="chip">LLM Tools</span>
+          <span class="chip">No-Code / Low-Code</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 <hr class="div">
