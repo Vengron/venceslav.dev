@@ -286,6 +286,92 @@ nav.scrolled {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 72px;
+  text-align: center;
+}
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 3.5rem 0;
+  width: 100%;
+  max-width: 900px;
+}
+.hero-eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.5s ease both;
+}
+.hero-h1 {
+  font-family: var(--display);
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+  line-height: 0.88;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.5s 0.08s ease both;
+}
+.hero-h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.hero-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 2.2rem;
+  animation: fadeUp 0.5s 0.16s ease both;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+  animation: fadeUp 0.5s 0.24s ease both;
+}
+/* Metric strip */
+.hero-metrics {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  animation: fadeUp 0.5s 0.32s ease both;
+}
+.hero-metric {
+  padding: 1.8rem 1rem;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.hero-metric:last-child { border-right: none; }
+.metric-num {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.metric-num em { font-style: normal; color: var(--red); }
+.metric-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -311,6 +397,44 @@ nav.scrolled {
   <a href="#pricing" onclick="closeMenu()">Pricing</a>
   <a href="#contact" class="m-cta" onclick="closeMenu()">Book a Call</a>
 </div>
+
+<!-- HERO -->
+<section id="hero" class="grid-overlay">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">— EU AI Expert · Based in Asia · Manufacturing-First —</div>
+    <h1 class="hero-h1">
+      REAL AI.<br>
+      REAL EXPERTISE.<br>
+      <em>REAL RESULTS.</em>
+    </h1>
+    <p class="hero-sub">
+      I lead an EU AI lab. I'm based in Asia. I show up at your factory.
+    </p>
+    <div class="hero-actions">
+      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Free Discovery Call →</a>
+      <a href="#services" class="btn-outline">See Services</a>
+    </div>
+  </div>
+  <div class="hero-metrics">
+    <div class="hero-metric">
+      <div class="metric-num">30<em>+</em></div>
+      <div class="metric-label">AI Projects<br>Per Year</div>
+    </div>
+    <div class="hero-metric">
+      <div class="metric-num">€4,500</div>
+      <div class="metric-label">Discovery<br>Sprint</div>
+    </div>
+    <div class="hero-metric">
+      <div class="metric-num">5<em>+</em></div>
+      <div class="metric-label">Years Applied<br>AI Research</div>
+    </div>
+    <div class="hero-metric">
+      <div class="metric-num">EU</div>
+      <div class="metric-label">AI Act &amp;<br>GDPR Compliant</div>
+    </div>
+  </div>
+</section>
+<hr class="div">
 
 <!-- SCRIPTS -->
 
