@@ -538,6 +538,116 @@ nav.scrolled {
   margin-bottom: 0.8rem;
 }
 .chip-wrap { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+/* ── PROOF ── */
+#proof {
+  background: var(--bg-deep);
+  padding: 7rem 3.5rem;
+}
+/* Outcomes */
+.proof-top { margin-bottom: 3.5rem; }
+.outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 3rem;
+}
+.outcome-card {
+  background: var(--bg-card);
+  padding: 2rem;
+}
+.outcome-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.outcome-result {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+.outcome-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+/* Chapter divider */
+.chapter-break {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+.chapter-break::before,
+.chapter-break::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.chapter-break-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* Credentials */
+.cred-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.cred-card {
+  background: var(--bg-card);
+  padding: 1.8rem;
+}
+.cred-tag {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.cred-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.cred-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.2);
+  transition: color 0.2s;
+}
+.cred-title a:hover { color: var(--red); }
+.cred-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.cred-year {
+  font-size: 0.62rem;
+  color: var(--red);
+  font-weight: 700;
+  margin-top: 0.6rem;
+  letter-spacing: 0.06em;
+}
 </style>
 </head>
 <body>
@@ -714,6 +824,70 @@ nav.scrolled {
       </div>
     </div>
 
+  </div>
+</section>
+<hr class="div">
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="proof-top reveal">
+    <div class="eyebrow">Outcomes</div>
+    <h2 class="h2">WHAT THIS LOOKS<br>LIKE IN PRACTICE.</h2>
+    <p class="sub">Results from manufacturing, coding, and productivity engagements. Client names withheld; industries and outcomes verified.</p>
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <div class="outcome-tag">Manufacturing · Electronics Assembly</div>
+        <div class="outcome-result">60% reduction in incoming inspection labor</div>
+        <div class="outcome-desc">Computer vision QC deployed on a single assembly line. 8-week pilot. Defect pass-through rate maintained; manual inspection headcount reallocated to higher-value tasks.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-tag">Software Team · B2B SaaS</div>
+        <div class="outcome-result">Team shipping AI features independently within 6 weeks</div>
+        <div class="outcome-desc">2-day agentic workflow workshop + 4-week implementation retainer. Team went from zero LLM integration experience to a production RAG system with full CI/CD.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-tag">Operations · Manufacturing SME</div>
+        <div class="outcome-result">12-page AI opportunity report in 3 days</div>
+        <div class="outcome-desc">Discovery Sprint at a 200-person factory. Report identified 4 viable AI use cases with cost-benefit estimates; client proceeded with predictive maintenance pilot as first priority.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-break reveal">
+    <span class="chapter-break-label">Credentials</span>
+  </div>
+
+  <div class="cred-grid reveal">
+    <div class="cred-card">
+      <div class="cred-tag">Current Role</div>
+      <div class="cred-title"><a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener">Head of AI Lab — Institute for Nanomaterials, Advanced Technologies &amp; Innovation</a></div>
+      <div class="cred-sub">Leading 10–15 ML engineers and LLM specialists. 30+ projects/year across research and industry.</div>
+      <div class="cred-year">Jan 2025 – Present</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">Co-Founder</div>
+      <div class="cred-title"><a href="https://www.ipf-industry.com/" target="_blank" rel="noopener">IPF Industry s.r.o.</a></div>
+      <div class="cred-sub">International trade and manufacturing — EEA, Middle East, India. Fully self-financed, 100% ownership retained.</div>
+      <div class="cred-year">Sept 2023 – Present</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">Education</div>
+      <div class="cred-title">MSc Artificial Intelligence — Universität zu Lübeck</div>
+      <div class="cred-sub">Pursuing alongside AI Lab leadership.</div>
+      <div class="cred-year">March 2026 –</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">Research</div>
+      <div class="cred-title">3 Published &amp; Preprint Research Papers</div>
+      <div class="cred-sub">Applied numerical ML and materials science (Physical Review B, APS; arXiv). <a href="https://arxiv.org/abs/2501.03377" target="_blank" rel="noopener">View on arXiv →</a></div>
+      <div class="cred-year">2023 – 2025</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">EU Grants · Certifications · Compliance</div>
+      <div class="cred-title">EU AI Act / GDPR · EDIH Northern &amp; Eastern Bohemia · NVIDIA DLI · DeepLearning.AI</div>
+      <div class="cred-sub">Digital Europe Programme · ML/AI for SMEs · Predictive Maintenance · Computer Vision</div>
+      <div class="cred-year">2022 – Active</div>
+    </div>
   </div>
 </section>
 <hr class="div">
