@@ -1,0 +1,1858 @@
+# Landing Page Redesign Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Completely rewrite `index.html` with an industrial dark-slate aesthetic, 6-section structure (Hero → About → Services → Proof → Pricing → Contact), Bebas Neue + Space Mono typography, and new copy throughout.
+
+**Architecture:** Single-file rewrite — all CSS in a `<style>` block, all JS in a `<script>` block at the end of `<body>`. No build tooling. Write section by section, committing after each section is visually confirmed. The Edit tool is used to append each new section's HTML + CSS before closing tags.
+
+**Tech Stack:** Pure HTML5 / CSS3 / vanilla JS. Google Fonts (Bebas Neue + Space Mono). Vercel Analytics + Speed Insights scripts carried over from current file.
+
+---
+
+## File Map
+
+| File | Action | Responsibility |
+|---|---|---|
+| `index.html` | Full rewrite | Everything: CSS, HTML, JS, meta |
+| `profile_foto.jpg` | Unchanged | Referenced in About section |
+| `favicon.svg` | Unchanged | Referenced in `<head>` |
+
+---
+
+## Verify Setup
+
+Before starting: open `index.html` directly in your browser (or run `npx serve . -p 3000` and open http://localhost:3000). Keep it open throughout — reload after each task to verify.
+
+---
+
+### Task 1: Document Shell + CSS Foundation + Nav
+
+**Files:**
+- Rewrite: `index.html` (complete file replacement — do not preserve any existing content)
+
+- [ ] **Step 1: Replace `index.html` with the new shell**
+
+Write the following as the complete contents of `index.html`. This is a full replacement.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Věnceslav Chumchal · AI Consultancy</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/profile_foto.jpg" />
+<meta name="description" content="EU AI Lab Head based in Asia. Fixed-price AI pilots and workshops for manufacturing, coding, and productivity. EU AI Act / GDPR-compliant delivery. Book a free discovery call." />
+<link rel="canonical" href="https://venceslav.tech/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://venceslav.tech/" />
+<meta property="og:title" content="Věnceslav Chumchal · EU AI Expert · Based in Asia" />
+<meta property="og:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops in manufacturing, coding, and productivity." />
+<meta property="og:image" content="https://venceslav.tech/profile_foto.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Věnceslav Chumchal · EU AI Expert · Based in Asia" />
+<meta name="twitter:description" content="EU AI Lab Head, physically based in Asia. Fixed-price pilots and workshops." />
+<meta name="twitter:image" content="https://venceslav.tech/profile_foto.jpg" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Věnceslav Chumchal",
+  "url": "https://venceslav.tech/",
+  "jobTitle": "AI Consultant & AI Lab Head",
+  "description": "EU AI Lab Head based in Asia delivering fixed-price AI pilots and workshops for manufacturing, coding, and productivity.",
+  "telephone": "+420777124827",
+  "email": "venceslav.ch@outlook.com",
+  "image": "https://venceslav.tech/profile_foto.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/venceslav-chumchal/",
+    "https://arxiv.org/abs/2501.03377"
+  ],
+  "knowsAbout": ["Artificial Intelligence","Machine Learning","Manufacturing AI","Industry 4.0","EU AI Act","GDPR","Predictive Maintenance","Computer Vision","Agentic Workflows"],
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Institute for Nanomaterials, Advanced Technologies and Innovation – TU Liberec",
+    "url": "https://www.cxi.tul.cz/en/"
+  },
+  "offers": [
+    {"@type":"Offer","name":"AI Discovery Sprint","price":"4500","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"AI for Manufacturing Pilot","price":"25000","priceCurrency":"EUR"},
+    {"@type":"Offer","name":"Workshops & Retainers","price":"3500","priceCurrency":"EUR"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:      #1A2035;
+  --bg-deep: #131929;
+  --bg-card: #1F2740;
+  --red:     #FF3333;
+  --red-dark:#CC1F1F;
+  --white:   #FFFFFF;
+  --muted:   rgba(255,255,255,0.45);
+  --faint:   rgba(255,255,255,0.15);
+  --border:  rgba(255,255,255,0.07);
+  --grid:    rgba(255,255,255,0.022);
+  --sans:    'Space Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ── GRID TEXTURE (applied via class) ── */
+.grid-overlay {
+  position: relative;
+}
+.grid-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+.grid-overlay > * { position: relative; z-index: 1; }
+
+/* ── SHARED UTILITIES ── */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+.h2 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 1.2rem;
+}
+.sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 440px;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--faint);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.chip {
+  display: inline-block;
+  background: rgba(255,255,255,0.07);
+  color: var(--faint);
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+}
+hr.div {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 3.5rem;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(26,32,53,0.94);
+  backdrop-filter: blur(16px);
+  border-color: var(--border);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--red); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--red) !important;
+  color: var(--white) !important;
+  padding: 0.45rem 1.2rem;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--red-dark) !important; }
+
+/* ── HAMBURGER ── */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px; z-index: 300;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--white); transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 190;
+  background: var(--bg-deep);
+  flex-direction: column; align-items: center; justify-content: center;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--display);
+  font-size: 3rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-bottom: 1px solid var(--border);
+  width: 100%; text-align: center;
+  transition: color 0.2s;
+}
+.mobile-menu a:first-child { border-top: 1px solid var(--border); }
+.mobile-menu a:hover { color: var(--red); }
+.mobile-menu a.m-cta {
+  background: var(--red);
+  color: var(--white) !important;
+  margin-top: 1.5rem;
+  border: none;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#">V_<span>CHUMCHAL</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#proof" onclick="closeMenu()">Proof</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#contact" class="m-cta" onclick="closeMenu()">Book a Call</a>
+</div>
+
+<!-- JS and Vercel scripts go here at end of body — leave as placeholder comment for now -->
+<!-- SCRIPTS -->
+
+</body>
+</html>
+```
+
+- [ ] **Step 2: Verify**
+
+Open/reload the browser. Confirm:
+- Page background is dark navy-slate (`#1A2035`)
+- Nav bar visible at top with `V_CHUMCHAL` logo in Bebas Neue, 4 links
+- Page is otherwise blank (expected — no sections yet)
+- No console errors
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: new HTML shell with CSS foundation, tokens, nav"
+```
+
+---
+
+### Task 2: Hero Section
+
+**Files:**
+- Modify: `index.html` — insert hero HTML after the mobile menu div; add hero CSS to `<style>`
+
+- [ ] **Step 1: Add hero CSS inside the `<style>` block** (insert before the closing `</style>` tag)
+
+```css
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 72px;
+  text-align: center;
+}
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 3.5rem 0;
+  width: 100%;
+  max-width: 900px;
+}
+.hero-eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.5s ease both;
+}
+.hero-h1 {
+  font-family: var(--display);
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+  line-height: 0.88;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.5s 0.08s ease both;
+}
+.hero-h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.hero-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 2.2rem;
+  animation: fadeUp 0.5s 0.16s ease both;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+  animation: fadeUp 0.5s 0.24s ease both;
+}
+/* Metric strip */
+.hero-metrics {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  animation: fadeUp 0.5s 0.32s ease both;
+}
+.hero-metric {
+  padding: 1.8rem 1rem;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.hero-metric:last-child { border-right: none; }
+.metric-num {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.metric-num em { font-style: normal; color: var(--red); }
+.metric-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+```
+
+- [ ] **Step 2: Add hero HTML** (replace the `<!-- SCRIPTS -->` comment with the hero section first, keep the comment after)
+
+Insert between the mobile menu closing tag and the `<!-- SCRIPTS -->` comment:
+
+```html
+<!-- HERO -->
+<section id="hero" class="grid-overlay">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">— EU AI Expert · Based in Asia · Manufacturing-First —</div>
+    <h1 class="hero-h1">
+      REAL AI.<br>
+      REAL EXPERTISE.<br>
+      <em>REAL RESULTS.</em>
+    </h1>
+    <p class="hero-sub">
+      I lead an EU AI lab. I'm based in Asia. I show up at your factory.
+    </p>
+    <div class="hero-actions">
+      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Free Discovery Call →</a>
+      <a href="#services" class="btn-outline">See Services</a>
+    </div>
+  </div>
+  <div class="hero-metrics">
+    <div class="hero-metric">
+      <div class="metric-num">30<em>+</em></div>
+      <div class="metric-label">AI Projects<br>Per Year</div>
+    </div>
+    <div class="hero-metric">
+      <div class="metric-num">€4,500</div>
+      <div class="metric-label">Discovery<br>Sprint</div>
+    </div>
+    <div class="hero-metric">
+      <div class="metric-num">5<em>+</em></div>
+      <div class="metric-label">Years Applied<br>AI Research</div>
+    </div>
+    <div class="hero-metric">
+      <div class="metric-num">EU</div>
+      <div class="metric-label">AI Act &amp;<br>GDPR Compliant</div>
+    </div>
+  </div>
+</section>
+<hr class="div">
+```
+
+- [ ] **Step 3: Verify**
+
+Reload browser. Confirm:
+- Full-viewport dark slate hero with grid texture visible
+- `REAL RESULTS.` line is red
+- 4-metric strip spans full width at bottom of hero with dividing lines
+- Hero elements animate in on load (staggered fadeUp)
+- Heading size scales down gracefully when you narrow the browser window
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: hero section with metric strip"
+```
+
+---
+
+### Task 3: About Section
+
+**Files:**
+- Modify: `index.html` — add About CSS + HTML
+
+- [ ] **Step 1: Add About CSS** (append inside `<style>` before `</style>`)
+
+```css
+/* ── ABOUT ── */
+#about {
+  background: var(--bg-deep);
+  padding: 7rem 3.5rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-text .h2 { margin-bottom: 1.5rem; }
+.about-body {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.9;
+}
+.about-body p + p { margin-top: 0.9rem; }
+.about-body a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.2);
+  transition: color 0.2s;
+}
+.about-body a:hover { color: var(--white); }
+/* Philosophy strip */
+.phil-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.phil-item {
+  padding: 1.4rem 1rem 1.4rem 0;
+  border-right: 1px solid var(--border);
+}
+.phil-item:last-child { border-right: none; padding-right: 0; }
+.phil-item:first-child { padding-left: 0; }
+.phil-icon { font-size: 1.1rem; margin-bottom: 0.4rem; display: block; }
+.phil-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.phil-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+/* Chip row */
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.8rem; }
+/* Photo */
+.about-photo { position: relative; overflow: hidden; }
+.about-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%) brightness(0.8);
+}
+.about-photo-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--red);
+  padding: 1.2rem 1.5rem;
+}
+.photo-name {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+}
+.photo-role {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+```
+
+- [ ] **Step 2: Add About HTML** (insert after the `<hr class="div">` that follows `#hero`, before `<!-- SCRIPTS -->`)
+
+```html
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <div class="eyebrow">About</div>
+    <h2 class="h2">FROM CNC MACHINIST<br>TO AI LAB LEAD.</h2>
+    <div class="about-body">
+      <p>I'm Věnceslav Chumchal. I lead the AI Lab at the <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener">Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec</a> — a team of 10–15 ML engineers and LLM specialists delivering 30+ applied AI projects a year, from research to production software.</p>
+      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener">IPF Industry</a> — an international trade and manufacturing company operating across the EEA, Middle East, and India.</p>
+      <p>I'm based in Southeast Asia — on your factory floor next week, with EU credentials and EU AI Act / GDPR delivery practices that international clients require. Every engagement ends with your team owning the capability. I don't create dependencies.</p>
+    </div>
+    <div class="phil-strip">
+      <div class="phil-item">
+        <span class="phil-icon">🍞</span>
+        <div class="phil-title">Skills, Not Dependencies</div>
+        <div class="phil-desc">You own the capability when I leave. That's the goal.</div>
+      </div>
+      <div class="phil-item">
+        <span class="phil-icon">🏭</span>
+        <div class="phil-title">Practitioner, Not Theorist</div>
+        <div class="phil-desc">Everything I teach, I do. In production. Today.</div>
+      </div>
+      <div class="phil-item">
+        <span class="phil-icon">🌏</span>
+        <div class="phil-title">EU Discipline, Asia Proximity</div>
+        <div class="phil-desc">EU credentials. On-site across Asia. Both, not one.</div>
+      </div>
+    </div>
+    <div class="chip-row">
+      <span class="chip">AI Lab Head · CXI / TU Liberec</span>
+      <span class="chip">Co-Founder · IPF Industry</span>
+      <span class="chip">MSc AI · Univ. Lübeck</span>
+      <span class="chip">EU AI Act / GDPR</span>
+    </div>
+  </div>
+  <div class="about-photo reveal">
+    <img src="profile_foto.jpg" alt="Věnceslav Chumchal" loading="lazy" decoding="async" />
+    <div class="about-photo-bar">
+      <div class="photo-name">VĚNCESLAV CHUMCHAL</div>
+      <div class="photo-role">AI Lab Head · EU · Based in Asia</div>
+    </div>
+  </div>
+</section>
+<hr class="div">
+```
+
+- [ ] **Step 3: Verify**
+
+Reload browser and scroll to About. Confirm:
+- 2-column layout: text left, photo right
+- Photo has grayscale tint and red bar at bottom
+- Philosophy strip has 3 items with vertical border lines between them
+- Chip tags visible below philosophy strip
+- Section fades in on scroll (`.reveal` class — won't animate until JS is added in Task 8, but should be visible)
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: about section with bio, philosophy strip, photo"
+```
+
+---
+
+### Task 4: Services Section
+
+**Files:**
+- Modify: `index.html` — add Services CSS + HTML
+
+- [ ] **Step 1: Add Services CSS** (append inside `<style>` before `</style>`)
+
+```css
+/* ── SERVICES ── */
+#services {
+  background: var(--bg);
+  padding: 7rem 3.5rem;
+}
+.svc-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.svc-card {
+  background: var(--bg-card);
+  overflow: hidden;
+  transition: background 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.svc-card:hover { background: #253050; }
+.svc-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.svc-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,32,53,0.2), rgba(26,32,53,0.75));
+}
+.svc-img-title {
+  position: absolute;
+  bottom: 1rem; left: 1.4rem;
+  z-index: 1;
+  font-family: var(--display);
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.svc-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+.svc-num {
+  font-family: var(--display);
+  font-size: 3rem;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.svc-for {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+.svc-title {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 0.7rem;
+  line-height: 1.1;
+}
+.svc-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+.svc-price {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  margin-bottom: 0.8rem;
+}
+.chip-wrap { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+```
+
+- [ ] **Step 2: Add Services HTML** (insert after the `<hr>` that follows `#about`, before `<!-- SCRIPTS -->`)
+
+```html
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-header reveal">
+    <div>
+      <div class="eyebrow">Services</div>
+      <h2 class="h2">THREE NICHES.<br>ONE PRACTITIONER.</h2>
+    </div>
+    <p class="sub">Every engagement is built around your processes, your codebase, your industry. No templates. No generic slide decks.</p>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc-card reveal">
+      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')">
+        <div class="svc-img-title">Manufacturing</div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">01</div>
+        <div class="svc-for">For: Manufacturing SMEs, operations leads, plant managers.</div>
+        <h3 class="svc-title">AI for Manufacturing &amp; Industry 4.0</h3>
+        <p class="svc-desc">One electronics-sector pilot cut incoming inspection labor by 60% in 8 weeks. Predictive maintenance, computer vision QC, and Industry 4.0 readiness — deployed on your factory floor by someone who has stood on it.</p>
+        <div class="svc-price">From €25,000</div>
+        <div class="chip-wrap">
+          <span class="chip">On-Site Engagements</span>
+          <span class="chip">Predictive Maintenance</span>
+          <span class="chip">Quality Control (CV)</span>
+          <span class="chip">Industry 4.0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80')">
+        <div class="svc-img-title">Coding</div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">02</div>
+        <div class="svc-for">For: Software teams, CTOs, dev leads who want to build serious AI systems.</div>
+        <h3 class="svc-title">Build Smarter with AI-Assisted Development</h3>
+        <p class="svc-desc">Teams reach confident autonomous deployment within 2 days. Claude Code, agentic workflows, and the engineering discipline that separates production AI from fragile prompt-and-pray.</p>
+        <div class="svc-price">From €3,500</div>
+        <div class="chip-wrap">
+          <span class="chip">Claude Code</span>
+          <span class="chip">Agentic Workflows</span>
+          <span class="chip">LLM Integration</span>
+          <span class="chip">RAG Systems</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80')">
+        <div class="svc-img-title">Productivity</div>
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">03</div>
+        <div class="svc-for">For: Knowledge workers, founders, operations teams feeling the pressure.</div>
+        <h3 class="svc-title">Automate Your Work Before Someone Else Does</h3>
+        <p class="svc-desc">Most audits surface 3–5 automations saving 2+ hours per person per week. A practical audit of what's worth automating — then the skills so your team keeps optimising after I leave.</p>
+        <div class="svc-price">From €3,500</div>
+        <div class="chip-wrap">
+          <span class="chip">Workflow Automation</span>
+          <span class="chip">AI Strategy</span>
+          <span class="chip">LLM Tools</span>
+          <span class="chip">No-Code / Low-Code</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<hr class="div">
+```
+
+- [ ] **Step 3: Verify**
+
+Reload and scroll to Services. Confirm:
+- 3 cards in a grid with 2px gap
+- Each card has a photo header with service name overlaid
+- Price in red (Bebas Neue)
+- Card background slightly lightens on hover
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: services section with 3 dense cards"
+```
+
+---
+
+### Task 5: Proof Section (Outcomes + Credentials)
+
+**Files:**
+- Modify: `index.html` — add Proof CSS + HTML
+
+- [ ] **Step 1: Add Proof CSS** (append inside `<style>` before `</style>`)
+
+```css
+/* ── PROOF ── */
+#proof {
+  background: var(--bg-deep);
+  padding: 7rem 3.5rem;
+}
+/* Outcomes */
+.proof-top { margin-bottom: 3.5rem; }
+.outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 3rem;
+}
+.outcome-card {
+  background: var(--bg-card);
+  padding: 2rem;
+}
+.outcome-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.outcome-result {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+.outcome-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+/* Chapter divider */
+.chapter-break {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+.chapter-break::before,
+.chapter-break::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.chapter-break-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* Credentials */
+.cred-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.cred-card {
+  background: var(--bg-card);
+  padding: 1.8rem;
+}
+.cred-tag {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.cred-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.cred-title a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.2);
+  transition: color 0.2s;
+}
+.cred-title a:hover { color: var(--red); }
+.cred-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.cred-year {
+  font-size: 0.62rem;
+  color: var(--red);
+  font-weight: 700;
+  margin-top: 0.6rem;
+  letter-spacing: 0.06em;
+}
+```
+
+- [ ] **Step 2: Add Proof HTML** (insert after the `<hr>` that follows `#services`, before `<!-- SCRIPTS -->`)
+
+```html
+<!-- PROOF -->
+<section id="proof">
+  <div class="proof-top reveal">
+    <div class="eyebrow">Outcomes</div>
+    <h2 class="h2">WHAT THIS LOOKS<br>LIKE IN PRACTICE.</h2>
+    <p class="sub">Results from manufacturing, coding, and productivity engagements. Client names withheld; industries and outcomes verified.</p>
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <div class="outcome-tag">Manufacturing · Electronics Assembly</div>
+        <div class="outcome-result">60% reduction in incoming inspection labor</div>
+        <div class="outcome-desc">Computer vision QC deployed on a single assembly line. 8-week pilot. Defect pass-through rate maintained; manual inspection headcount reallocated to higher-value tasks.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-tag">Software Team · B2B SaaS</div>
+        <div class="outcome-result">Team shipping AI features independently within 6 weeks</div>
+        <div class="outcome-desc">2-day agentic workflow workshop + 4-week implementation retainer. Team went from zero LLM integration experience to a production RAG system with full CI/CD.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-tag">Operations · Manufacturing SME</div>
+        <div class="outcome-result">12-page AI opportunity report in 3 days</div>
+        <div class="outcome-desc">Discovery Sprint at a 200-person factory. Report identified 4 viable AI use cases with cost-benefit estimates; client proceeded with predictive maintenance pilot as first priority.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-break reveal">
+    <span class="chapter-break-label">Credentials</span>
+  </div>
+
+  <div class="cred-grid reveal">
+    <div class="cred-card">
+      <div class="cred-tag">Current Role</div>
+      <div class="cred-title"><a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener">Head of AI Lab — Institute for Nanomaterials, Advanced Technologies &amp; Innovation</a></div>
+      <div class="cred-sub">Leading 10–15 ML engineers and LLM specialists. 30+ projects/year across research and industry.</div>
+      <div class="cred-year">Jan 2025 – Present</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">Co-Founder</div>
+      <div class="cred-title"><a href="https://www.ipf-industry.com/" target="_blank" rel="noopener">IPF Industry s.r.o.</a></div>
+      <div class="cred-sub">International trade and manufacturing — EEA, Middle East, India. Fully self-financed, 100% ownership retained.</div>
+      <div class="cred-year">Sept 2023 – Present</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">Education</div>
+      <div class="cred-title">MSc Artificial Intelligence — Universität zu Lübeck</div>
+      <div class="cred-sub">Pursuing alongside AI Lab leadership.</div>
+      <div class="cred-year">March 2026 –</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">Research</div>
+      <div class="cred-title">3 Published &amp; Preprint Research Papers</div>
+      <div class="cred-sub">Applied numerical ML and materials science (Physical Review B, APS; arXiv). <a href="https://arxiv.org/abs/2501.03377" target="_blank" rel="noopener">View on arXiv →</a></div>
+      <div class="cred-year">2023 – 2025</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-tag">EU Grants · Certifications · Compliance</div>
+      <div class="cred-title">EU AI Act / GDPR · EDIH Northern &amp; Eastern Bohemia · NVIDIA DLI · DeepLearning.AI</div>
+      <div class="cred-sub">Digital Europe Programme · ML/AI for SMEs · Predictive Maintenance · Computer Vision</div>
+      <div class="cred-year">2022 – Active</div>
+    </div>
+  </div>
+</section>
+<hr class="div">
+```
+
+- [ ] **Step 3: Verify**
+
+Reload and scroll to Proof. Confirm:
+- 3 outcome cards in grid
+- Chapter break with `CREDENTIALS` label centered with horizontal rules either side
+- 5 credential cards in 3-column grid (items 4–5 fill second row left-aligned)
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: proof section with outcomes and credentials"
+```
+
+---
+
+### Task 6: Pricing Section + FAQ
+
+**Files:**
+- Modify: `index.html` — add Pricing + FAQ CSS + HTML
+
+- [ ] **Step 1: Add Pricing + FAQ CSS** (append inside `<style>` before `</style>`)
+
+```css
+/* ── PRICING ── */
+#pricing {
+  background: var(--bg);
+  padding: 7rem 3.5rem;
+}
+.pricing-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+.p-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  align-items: stretch;
+}
+.p-card {
+  background: var(--bg-card);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.p-card.feat { background: var(--red); }
+.p-card.feat .p-name,
+.p-card.feat .p-period,
+.p-card.feat .p-desc,
+.p-card.feat .p-process-step { color: rgba(255,255,255,0.8); }
+.p-card.feat .p-feats li { color: rgba(255,255,255,0.85); }
+.p-card.feat .p-feats li::before { color: rgba(255,255,255,0.7); }
+.p-card.feat .btn-primary { background: var(--white); color: var(--red); }
+.p-card.feat .btn-primary:hover { background: rgba(255,255,255,0.9); }
+.p-pop {
+  position: absolute;
+  top: 1.2rem; right: 1.2rem;
+  background: rgba(255,255,255,0.18);
+  color: var(--white);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+.p-name {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.p-price {
+  font-family: var(--display);
+  font-size: 2.6rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.p-period {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+}
+.p-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+/* Embedded process steps */
+.p-process {
+  margin-bottom: 1.4rem;
+  padding: 0.8rem;
+  background: rgba(0,0,0,0.15);
+  border-left: 2px solid rgba(255,255,255,0.12);
+}
+.p-process-label {
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.p-process-step {
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 0.2rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+.p-process-step::before {
+  content: '→';
+  color: var(--red);
+  font-size: 0.62rem;
+  flex-shrink: 0;
+}
+.p-card.feat .p-process { background: rgba(0,0,0,0.12); border-left-color: rgba(255,255,255,0.2); }
+.p-feats {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+.p-feats li {
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0.3rem 0;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.p-feats li::before {
+  content: '✓';
+  color: var(--red);
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.p-card .btn-primary { text-align: center; }
+.p-note {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── FAQ (slim, below pricing) ── */
+#faq { padding: 3rem 3.5rem 5rem; background: var(--bg); }
+.faq-inner { max-width: 720px; margin: 0 auto; }
+.faq-title {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+details {
+  border-top: 1px solid var(--border);
+}
+details:last-child { border-bottom: 1px solid var(--border); }
+summary {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--white);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+}
+summary::-webkit-details-marker { display: none; }
+.faq-icon {
+  color: var(--red);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+details[open] .faq-icon { transform: rotate(45deg); }
+.faq-body {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.85;
+  padding-bottom: 1.4rem;
+}
+```
+
+- [ ] **Step 2: Add Pricing + FAQ HTML** (insert after the `<hr>` that follows `#proof`, before `<!-- SCRIPTS -->`)
+
+```html
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header reveal">
+    <div>
+      <div class="eyebrow">Engagements</div>
+      <h2 class="h2">FIXED SCOPE.<br>PREDICTABLE COST.</h2>
+    </div>
+    <p class="sub">Fixed-price packages designed for SMEs adopting AI. All rates in EUR. On-site work in Asia included in package prices.</p>
+  </div>
+  <div class="p-grid">
+
+    <div class="p-card reveal">
+      <div class="p-name">AI for Manufacturing</div>
+      <div class="p-price">From €25,000</div>
+      <div class="p-period">6–12 week pilot · on-site visits included</div>
+      <div class="p-desc">One production-ready model on a single line or machine. Predictive maintenance, quality control, or Industry 4.0 readiness. Day rate from €1,500 · Retainer from €5,000/month.</div>
+      <div class="p-process">
+        <div class="p-process-label">How it works</div>
+        <div class="p-process-step">Free 20-min call → scoped Manufacturing pilot</div>
+        <div class="p-process-step">On-site deployment → you own the model</div>
+      </div>
+      <ul class="p-feats">
+        <li>Manufacturing readiness assessment (5–7 days)</li>
+        <li>Pilot model trained on real production data</li>
+        <li>On-site deployment &amp; validation</li>
+        <li>ROI report with measured baseline</li>
+        <li>30-day post-deployment support</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Discuss Your Pilot</a>
+    </div>
+
+    <div class="p-card feat reveal">
+      <div class="p-pop">Front-Door Product</div>
+      <div class="p-name">AI Discovery Sprint</div>
+      <div class="p-price">€4,500</div>
+      <div class="p-period">3 days · fixed scope</div>
+      <div class="p-desc">The first paid step. I diagnose where AI creates real value in your operation and deliver a 12-page opportunity report + executive presentation. Fee credited toward any follow-on engagement within 90 days.</div>
+      <div class="p-process">
+        <div class="p-process-label">How it works</div>
+        <div class="p-process-step">Free 20-min call → confirm fit</div>
+        <div class="p-process-step">3-day Sprint → report + roadmap you keep</div>
+      </div>
+      <ul class="p-feats">
+        <li>1 on-site visit + stakeholder interviews</li>
+        <li>AI opportunity audit</li>
+        <li>12-page written report</li>
+        <li>Executive presentation</li>
+        <li>Prioritized roadmap for next engagement</li>
+      </ul>
+      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Discovery Sprint</a>
+    </div>
+
+    <div class="p-card reveal">
+      <div class="p-name">Workshops &amp; Retainers</div>
+      <div class="p-price">From €3,500</div>
+      <div class="p-period">1–2 day workshop · on-site</div>
+      <div class="p-desc">Hands-on workshops for dev teams (Claude Code, agentic workflows) or operations teams (workflow automation). Coding day rate from €1,000 · Productivity day rate from €800 · Retainers from €2,500/month.</div>
+      <div class="p-process">
+        <div class="p-process-label">How it works</div>
+        <div class="p-process-step">Free 20-min call → scoped workshop</div>
+        <div class="p-process-step">On-site lab day → you ship autonomously</div>
+      </div>
+      <ul class="p-feats">
+        <li>1–2 day on-site workshop (up to 30 participants)</li>
+        <li>Tailored to your stack and workflows</li>
+        <li>Hands-on labs and live builds</li>
+        <li>Custom playbook and follow-up support</li>
+        <li>Optional 1-month implementation retainer</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Discuss a Workshop</a>
+    </div>
+
+  </div>
+  <p class="p-note">Quarterly retainers from €12,000 (3 months, 4 hrs/week + 2 on-site visits). Day rates and custom scopes on request. Travel beyond standard on-site visits billed at cost.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner reveal">
+    <div class="faq-title">COMMON QUESTIONS</div>
+    <details>
+      <summary>
+        Are you actually available on-site next week?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Yes — I'm based in Southeast Asia and travel across the region regularly. Typical lead time for an on-site visit is 1–2 weeks from confirmed engagement. Remote kickoffs can start within days. The Discovery Sprint includes one on-site day within the 3-day scope.
+      </div>
+    </details>
+    <details>
+      <summary>
+        We tried AI tools before and they didn't stick. Why would this be different?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Most AI tool deployments fail because they're imposed on a team without building understanding. Every engagement here is built around transferring the thinking, not just the tool. Your team will understand why the system works — and be able to fix it, extend it, or replace it. That's what "skills, not dependencies" means in practice.
+      </div>
+    </details>
+  </div>
+</section>
+<hr class="div">
+```
+
+- [ ] **Step 3: Verify**
+
+Reload and scroll to Pricing. Confirm:
+- Centre card (Discovery Sprint) has red background
+- `FRONT-DOOR PRODUCT` badge visible top-right of centre card
+- "How it works" embedded box visible in each card
+- FAQ accordion below with `+` icon that rotates on open (JS not yet wired — toggle won't animate yet but `<details>` still works natively)
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: pricing section with embedded process, slim FAQ"
+```
+
+---
+
+### Task 7: Contact Section + Footer
+
+**Files:**
+- Modify: `index.html` — add Contact + Footer CSS + HTML
+
+- [ ] **Step 1: Add Contact + Footer CSS** (append inside `<style>` before `</style>`)
+
+```css
+/* ── CONTACT ── */
+#contact {
+  background: var(--bg-deep);
+  padding: 7rem 3.5rem;
+  position: relative;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+#contact .eyebrow { color: var(--red); }
+#contact .sub { color: var(--muted); max-width: 380px; }
+/* Channel rows */
+.c-channels { margin-top: 2.5rem; display: flex; flex-direction: column; }
+.c-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: gap 0.25s;
+}
+.c-row:first-child { border-top: 1px solid var(--border); }
+.c-row:hover { gap: 2rem; }
+.c-icon {
+  width: 42px; height: 42px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: background 0.2s, border-color 0.2s;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.c-row:hover .c-icon { background: var(--red); border-color: var(--red); }
+.c-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.c-val {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+}
+/* Booking card */
+.c-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.8rem;
+}
+.c-card-head {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.c-card-body {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 1.8rem;
+}
+.c-card .btn-primary { width: 100%; text-align: center; }
+.c-tz {
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+  padding: 1.6rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ft-copy {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+}
+.ft-links { display: flex; gap: 2rem; }
+.ft-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 700;
+}
+.ft-links a:hover { color: var(--red); }
+```
+
+- [ ] **Step 2: Add Contact + Footer HTML** (insert after the `<hr>` that follows `#faq`, before `<!-- SCRIPTS -->`)
+
+```html
+<!-- CONTACT -->
+<section id="contact" class="grid-overlay">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="eyebrow">Contact</div>
+      <h2 class="h2">READY TO START?<br>LET'S TALK.</h2>
+      <p class="sub">I reply within 24 hours. Based in Asia — Mon–Fri. On-site visits across the region.</p>
+      <div class="c-channels">
+        <a href="mailto:venceslav.ch@outlook.com" class="c-row">
+          <div class="c-icon">✉</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val">venceslav.ch@outlook.com</div>
+          </div>
+        </a>
+        <a href="https://wa.me/420777124827" target="_blank" class="c-row">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-label">WhatsApp</div>
+            <div class="c-val">+420 777 124 827</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank" class="c-row">
+          <div class="c-icon">in</div>
+          <div>
+            <div class="c-label">LinkedIn</div>
+            <div class="c-val">Věnceslav Chumchal</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="c-card reveal">
+      <div class="c-card-head">NOT SURE WHERE<br>TO START?<br>THE FIRST CALL IS FREE.</div>
+      <div class="c-card-body">A free 20-minute call to discuss your situation. If we're a fit, the typical next step is the €4,500 AI Discovery Sprint — fixed scope, 3 days, written report you keep regardless of what comes next. The fee is credited toward any follow-on engagement within 90 days.</div>
+      <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Discovery Call →</a>
+      <div class="c-tz">Based in Asia · Mon–Fri · On-site visits across the region</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-copy">© 2026 Věnceslav Chumchal · AI Consultancy</div>
+  <div class="ft-links">
+    <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank">LinkedIn</a>
+    <a href="https://arxiv.org/abs/2501.03377" target="_blank">Research</a>
+    <a href="mailto:venceslav.ch@outlook.com">Email</a>
+    <a href="https://wa.me/420777124827" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+```
+
+- [ ] **Step 3: Verify**
+
+Reload and scroll to Contact. Confirm:
+- 2-column layout: channels left, booking card right
+- Grid overlay texture visible in contact section
+- Channel rows expand gap on hover
+- Icon fills red on hover
+- Footer visible at very bottom
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: contact section and footer"
+```
+
+---
+
+### Task 8: JavaScript — Scroll Reveal, Nav, Hamburger, Analytics
+
+**Files:**
+- Modify: `index.html` — replace `<!-- SCRIPTS -->` comment with complete script block
+
+- [ ] **Step 1: Replace `<!-- SCRIPTS -->` comment with the following** (at the end of `<body>`)
+
+```html
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+
+<script>
+// ── Nav scroll ──────────────────────────────────────────────
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ── Hamburger ───────────────────────────────────────────────
+const btn = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+btn.addEventListener('click', () => {
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMenu() {
+  btn.classList.remove('open');
+  menu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── Scroll reveal ───────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger siblings within same parent
+      const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+      siblings.forEach((el, idx) => {
+        if (el === entry.target) {
+          el.style.transitionDelay = (idx * 0.07) + 's';
+        }
+      });
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Analytics ───────────────────────────────────────────────
+function trackEvent(name, props) {
+  try { va('event', Object.assign({ name }, props || {})); } catch(e) {}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href*="calendarbridge.com"]').forEach(el => {
+    el.addEventListener('click', () => {
+      trackEvent('booking_click', { source: el.closest('#hero') ? 'hero' : el.closest('#pricing') ? 'pricing' : 'contact' });
+    });
+  });
+
+  document.querySelectorAll('#pricing .btn-primary').forEach(el => {
+    el.addEventListener('click', () => {
+      const tier = (el.closest('.p-card')?.querySelector('.p-name')?.textContent || '').trim();
+      trackEvent('pricing_cta_click', { tier });
+    });
+  });
+
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(el => {
+    el.addEventListener('click', () => trackEvent('nav_click', { label: el.textContent.trim() }));
+  });
+
+  document.querySelectorAll('.c-row').forEach(el => {
+    el.addEventListener('click', () => {
+      const label = el.querySelector('.c-label')?.textContent?.trim() || '';
+      trackEvent('contact_channel_click', { channel: label });
+    });
+  });
+
+  // Scroll depth milestones
+  const depthFired = {};
+  window.addEventListener('scroll', () => {
+    const pct = Math.round(((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100);
+    [25, 50, 75, 100].forEach(m => {
+      if (pct >= m && !depthFired[m]) {
+        depthFired[m] = true;
+        trackEvent('scroll_depth', { percent: m });
+      }
+    });
+  }, { passive: true });
+});
+</script>
+```
+
+- [ ] **Step 2: Verify**
+
+Reload page. Confirm:
+- Page loads with hero elements animating in (staggered fadeUp)
+- Scroll down: nav gains frosted background after ~40px
+- Sections fade up as they enter viewport
+- Hamburger menu opens/closes on mobile-width (narrow browser to ~375px)
+- No console errors
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: scroll reveal, nav, hamburger, analytics"
+```
+
+---
+
+### Task 9: Responsive Styles
+
+**Files:**
+- Modify: `index.html` — add responsive CSS inside `<style>` before `</style>`
+
+- [ ] **Step 1: Add responsive CSS** (append inside `<style>` before `</style>`)
+
+```css
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  /* Nav */
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  /* Shared section padding */
+  section { padding: 4.5rem 1.5rem !important; }
+  #faq { padding: 2rem 1.5rem 4rem !important; }
+
+  /* Hero */
+  .hero-inner { padding: 3rem 0 0; }
+  .hero-metrics { grid-template-columns: repeat(2, 1fr); }
+  .hero-metric:nth-child(2) { border-right: none; }
+
+  /* About */
+  #about { grid-template-columns: 1fr; gap: 3rem; }
+
+  /* Philosophy strip */
+  .phil-strip { grid-template-columns: 1fr; }
+  .phil-item { border-right: none; border-bottom: 1px solid var(--border); padding: 1.2rem 0; }
+  .phil-item:last-child { border-bottom: none; }
+  .phil-item:first-child { padding-top: 0; }
+
+  /* Grids */
+  .svc-grid,
+  .outcome-grid,
+  .cred-grid,
+  .p-grid { grid-template-columns: 1fr; }
+
+  /* Section headers */
+  .svc-header,
+  .pricing-header { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  /* Contact */
+  .contact-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+
+  /* Footer */
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 { font-size: clamp(3rem, 11vw, 5rem); }
+  .hero-metrics { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline { text-align: center; }
+}
+```
+
+- [ ] **Step 2: Verify at mobile**
+
+Narrow browser to 375px width (or use DevTools device emulation). Confirm:
+- Nav collapses to hamburger, hamburger menu works
+- Hero metric strip becomes 2×2 grid
+- All section grids (services, outcomes, credentials, pricing) stack to single column
+- About section stacks (text on top, photo below)
+- Philosophy strip stacks vertically
+- Contact section stacks (channels above booking card)
+- No horizontal overflow at any breakpoint
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: responsive styles for mobile/tablet"
+```
+
+---
+
+### Task 10: Final Review + Polish
+
+**Files:**
+- Modify: `index.html` — minor fixes only
+
+- [ ] **Step 1: Full visual pass — desktop**
+
+Open at full desktop width (1440px or wider). Walk through every section and verify:
+
+| Section | Check |
+|---|---|
+| Nav | Logo correct (`V_CHUMCHAL`), 4 links, red CTA button, scrolled state |
+| Hero | Grid texture visible, 3-line headline, "REAL RESULTS." is red, metric strip correct, animations fire |
+| About | 2-col layout, philosophy strip has vertical borders, photo bar red |
+| Services | 3 cards even height, price anchors red, hover darkens card |
+| Proof | 3 outcome cards, chapter break centered, 5 credential cards (3+2) |
+| Pricing | Centre card red, `FRONT-DOOR PRODUCT` badge, process boxes present |
+| FAQ | 2 questions, `+` rotates on open |
+| Contact | Grid texture, icon hover → red, booking card correctly styled |
+| Footer | Links visible, hover → red |
+
+- [ ] **Step 2: Check all external links open correctly**
+
+Click each and confirm they open in a new tab:
+- CalendarBridge booking link (hero + pricing + contact)
+- CXI/TU Liberec (About + Credentials)
+- IPF Industry (About + Credentials)
+- arXiv paper (Credentials + footer)
+- LinkedIn (Contact + footer)
+- WhatsApp (Contact + footer)
+
+- [ ] **Step 3: Check `<title>`, meta description, and JSON-LD**
+
+Open DevTools → Elements. Verify:
+- `<title>Věnceslav Chumchal · AI Consultancy</title>` present
+- `<meta name="description">` has the correct content
+- `<script type="application/ld+json">` block is present and parseable (copy/paste to jsonld.app to validate)
+
+- [ ] **Step 4: Fix any issues found, then commit**
+
+```bash
+git add index.html
+git commit -m "feat: final polish and visual review"
+```
+
+- [ ] **Step 5: Push to `dev` branch for preview deployment**
+
+```bash
+git push origin dev
+```
+
+Wait ~60 seconds, then verify the Vercel preview URL (https://project-1bgko.vercel.app) renders correctly. Check:
+- Fonts load (Bebas Neue + Space Mono — not fallback sans-serif)
+- Vercel Analytics script loads (Network tab → `/_vercel/insights/script.js`)
+- No 404s on images
+
+---
+
+## Spec Coverage Check
+
+| Spec requirement | Task |
+|---|---|
+| Dark slate `#1A2035` background | Task 1 (CSS tokens) |
+| `#FF3333` sole accent | Task 1 (CSS tokens) |
+| Bebas Neue + Space Mono only | Task 1 (font import + tokens) |
+| Grid overlay texture | Task 1 (`.grid-overlay`) |
+| Scroll reveal on sections | Task 8 (IntersectionObserver) |
+| Nav: transparent → frosted on scroll | Task 8 (JS) |
+| Hero: centered headline + metric strip | Task 2 |
+| `REAL RESULTS.` in red | Task 2 |
+| About: 2-col bio + philosophy strip + photo | Task 3 |
+| Services: 3 dense cards with "For:" line + price anchor | Task 4 |
+| Proof: outcomes + chapter break + credentials | Task 5 |
+| Pricing: embedded process steps per card | Task 6 |
+| FAQ: 2 items only | Task 6 |
+| Contact: channels + booking card | Task 7 |
+| Analytics events (booking, nav, scroll depth) | Task 8 |
+| Mobile responsive | Task 9 |
+| Copy rewrite (outcome-first, punchy H2s) | Tasks 2–7 (copy embedded in HTML) |
+| Meta/SEO carried over unchanged | Task 1 |
