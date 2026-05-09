@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Věnceslav Chumchal · AI Consultancy</title>
+<title>EU AI Expert · Based in Asia · Věnceslav Chumchal</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/profile_foto.jpg" />
 <meta name="description" content="EU AI Lab Head based in Asia. Fixed-price AI pilots and workshops for manufacturing, coding, and productivity. EU AI Act / GDPR-compliant delivery. Book a free discovery call." />
@@ -28,7 +28,7 @@
   "jobTitle": "AI Consultant & AI Lab Head",
   "description": "EU AI Lab Head based in Asia delivering fixed-price AI pilots and workshops for manufacturing, coding, and productivity.",
   "telephone": "+420777124827",
-  "email": "venceslav.ch@outlook.com",
+  "email": "venceslav.chumchal@gmail.com",
   "image": "https://venceslav.tech/profile_foto.jpg",
   "sameAs": [
     "https://www.linkedin.com/in/venceslav-chumchal/",
@@ -49,7 +49,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
 :root {
@@ -59,12 +59,13 @@
   --red:     #FF3333;
   --red-dark:#CC1F1F;
   --white:   #FFFFFF;
-  --muted:   rgba(255,255,255,0.45);
-  --faint:   rgba(255,255,255,0.15);
+  --muted:   rgba(255,255,255,0.68);
+  --faint:   rgba(255,255,255,0.30);
   --border:  rgba(255,255,255,0.07);
   --grid:    rgba(255,255,255,0.022);
   --sans:    'Space Mono', monospace;
   --display: 'Bebas Neue', sans-serif;
+  --body:    'DM Sans', sans-serif;
 }
 
 /* ── RESET ── */
@@ -74,7 +75,7 @@ body {
   background: var(--bg);
   color: var(--white);
   font-family: var(--sans);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.75;
   font-weight: 400;
   overflow-x: hidden;
@@ -127,7 +128,7 @@ body {
   margin-bottom: 1.2rem;
 }
 .sub {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--muted);
   line-height: 1.8;
   max-width: 440px;
@@ -306,13 +307,27 @@ nav.scrolled {
   max-width: 900px;
 }
 .hero-eyebrow {
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--white);
   font-weight: 700;
   margin-bottom: 1.8rem;
   animation: fadeUp 0.5s ease both;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.5rem 1.1rem;
+  background: rgba(255,51,51,0.08);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  flex-shrink: 0;
 }
 .hero-h1 {
   font-family: var(--display);
@@ -328,10 +343,11 @@ nav.scrolled {
   color: var(--red);
 }
 .hero-sub {
-  font-size: 0.88rem;
+  font-size: 1.15rem;
   color: var(--muted);
   max-width: 560px;
   line-height: 1.8;
+  margin-top: 1.5rem;
   margin-bottom: 2.2rem;
   animation: fadeUp 0.5s 0.16s ease both;
 }
@@ -385,7 +401,8 @@ nav.scrolled {
 .about-text .h2 { margin-bottom: 1.5rem; }
 .about-body {
   color: var(--muted);
-  font-size: 0.84rem;
+  font-family: var(--body);
+  font-size: 0.9rem;
   line-height: 1.9;
 }
 .about-body p + p { margin-top: 0.9rem; }
@@ -412,7 +429,7 @@ nav.scrolled {
 }
 .phil-item:last-child { border-right: none; padding-right: 0; }
 .phil-item:first-child { padding-left: 0; }
-.phil-icon { font-size: 1.1rem; margin-bottom: 0.4rem; display: block; }
+.phil-icon { display: block; margin-bottom: 0.6rem; line-height: 0; }
 .phil-title {
   font-family: var(--display);
   font-size: 1rem;
@@ -421,7 +438,7 @@ nav.scrolled {
   margin-bottom: 0.3rem;
 }
 .phil-desc {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.65;
 }
@@ -510,7 +527,7 @@ nav.scrolled {
   margin-bottom: 0.3rem;
 }
 .svc-for {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 0.8rem;
@@ -524,7 +541,8 @@ nav.scrolled {
   line-height: 1.1;
 }
 .svc-desc {
-  font-size: 0.8rem;
+  font-family: var(--body);
+  font-size: 0.87rem;
   color: var(--muted);
   line-height: 1.8;
   margin-bottom: 1.2rem;
@@ -555,7 +573,7 @@ nav.scrolled {
 }
 .outcome-card {
   background: var(--bg-card);
-  padding: 2rem;
+  padding: 2.5rem 2rem;
 }
 .outcome-tag {
   font-size: 0.58rem;
@@ -563,18 +581,26 @@ nav.scrolled {
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+.outcome-stat {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--red);
+  margin-bottom: 0.4rem;
 }
 .outcome-result {
-  font-family: var(--display);
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--white);
   margin-bottom: 0.8rem;
 }
 .outcome-desc {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -716,7 +742,8 @@ nav.scrolled {
   margin-bottom: 1.4rem;
 }
 .p-desc {
-  font-size: 0.8rem;
+  font-family: var(--body);
+  font-size: 0.87rem;
   color: var(--muted);
   line-height: 1.75;
   margin-bottom: 1.4rem;
@@ -727,20 +754,20 @@ nav.scrolled {
 .p-process {
   margin-bottom: 1.4rem;
   padding: 0.8rem;
-  background: rgba(0,0,0,0.15);
-  border-left: 2px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.07);
+  border-left: 2px solid rgba(255,255,255,0.22);
 }
 .p-process-label {
   font-size: 0.52rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--faint);
+  color: rgba(255,255,255,0.55);
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
 .p-process-step {
   font-size: 0.72rem;
-  color: var(--muted);
+  color: rgba(255,255,255,0.85);
   padding: 0.2rem 0;
   display: flex;
   gap: 0.5rem;
@@ -759,7 +786,7 @@ nav.scrolled {
   flex: 1;
 }
 .p-feats li {
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   color: var(--muted);
   padding: 0.3rem 0;
   display: flex;
@@ -783,7 +810,7 @@ nav.scrolled {
 }
 
 /* ── FAQ (slim, below pricing) ── */
-#faq { padding: 3rem 3.5rem 5rem; background: var(--bg); }
+#faq { padding: 2rem 3.5rem 3.5rem; background: var(--bg); }
 .faq-inner { max-width: 720px; margin: 0 auto; }
 .faq-title {
   font-family: var(--display);
@@ -819,7 +846,8 @@ summary::-webkit-details-marker { display: none; }
 }
 details[open] .faq-icon { transform: rotate(45deg); }
 .faq-body {
-  font-size: 0.82rem;
+  font-family: var(--body);
+  font-size: 0.88rem;
   color: var(--muted);
   line-height: 1.85;
   padding-bottom: 1.4rem;
@@ -895,7 +923,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
   margin-bottom: 1rem;
 }
 .c-card-body {
-  font-size: 0.8rem;
+  font-family: var(--body);
+  font-size: 0.87rem;
   color: var(--muted);
   line-height: 1.85;
   margin-bottom: 1.8rem;
@@ -920,14 +949,14 @@ footer {
 }
 .ft-copy {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.4);
 }
 .ft-links { display: flex; gap: 2rem; }
 .ft-links a {
   font-size: 0.65rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.42);
   text-decoration: none;
   transition: color 0.2s;
   font-weight: 700;
@@ -943,7 +972,7 @@ footer {
 
   /* Shared section padding */
   section { padding: 4.5rem 1.5rem !important; }
-  #faq { padding: 2rem 1.5rem 4rem !important; }
+  #faq { padding: 1.5rem 1.5rem 3rem !important; }
 
   /* Hero */
   .hero-inner { padding: 3rem 0 0; }
@@ -1012,7 +1041,7 @@ footer {
 <!-- HERO -->
 <section id="hero" class="grid-overlay">
   <div class="hero-inner">
-    <div class="hero-eyebrow">— EU AI Expert · Based in Asia · Manufacturing-First —</div>
+    <div class="hero-eyebrow">EU AI Expert · Based in Asia · Manufacturing-First</div>
     <h1 class="hero-h1">
       REAL AI.<br>
       REAL EXPERTISE.<br>
@@ -1023,7 +1052,7 @@ footer {
     </p>
     <div class="hero-actions">
       <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Free Discovery Call →</a>
-      <a href="#services" class="btn-outline">See Services</a>
+      <a href="#services" class="btn-outline">How It Works</a>
     </div>
   </div>
   <div class="hero-metrics">
@@ -1054,22 +1083,23 @@ footer {
     <h2 class="h2">FROM CNC MACHINIST<br>TO AI LAB LEAD.</h2>
     <div class="about-body">
       <p>I'm Věnceslav Chumchal. I lead the AI Lab at the <a href="https://www.cxi.tul.cz/en/" target="_blank" rel="noopener">Institute for Nanomaterials, Advanced Technologies and Innovation at TU Liberec</a> — a team of 10–15 ML engineers and LLM specialists delivering 30+ applied AI projects a year, from research to production software.</p>
-      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region. I also co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener">IPF Industry</a> — an international trade and manufacturing company operating across the EEA, Middle East, and India.</p>
+      <p>My path is unusual: I started on the shop floor as a CNC machinist, moved into data engineering, then ML research, and built my way to leading one of the top applied AI teams in the region.</p>
+      <p>Alongside that, I co-founded <a href="https://www.ipf-industry.com/" target="_blank" rel="noopener">IPF Industry</a> — an international trade and manufacturing company operating across the EEA, Middle East, and India.</p>
       <p>I'm based in Southeast Asia — on your factory floor next week, with EU credentials and EU AI Act / GDPR delivery practices that international clients require. Every engagement ends with your team owning the capability. I don't create dependencies.</p>
     </div>
     <div class="phil-strip">
       <div class="phil-item">
-        <span class="phil-icon">🍞</span>
+        <span class="phil-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10h14M13 6l4 4-4 4" stroke="#FF3333" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/></svg></span>
         <div class="phil-title">Skills, Not Dependencies</div>
         <div class="phil-desc">You own the capability when I leave. That's the goal.</div>
       </div>
       <div class="phil-item">
-        <span class="phil-icon">🏭</span>
+        <span class="phil-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="16" height="16" stroke="#FF3333" stroke-width="1.5"/><path d="M10 6v8M6 10h8" stroke="#FF3333" stroke-width="1.5" stroke-linecap="square"/></svg></span>
         <div class="phil-title">Practitioner, Not Theorist</div>
         <div class="phil-desc">Everything I teach, I do. In production. Today.</div>
       </div>
       <div class="phil-item">
-        <span class="phil-icon">🌏</span>
+        <span class="phil-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8" stroke="#FF3333" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" fill="#FF3333"/><path d="M10 2v4M10 14v4M2 10h4M14 10h4" stroke="#FF3333" stroke-width="1"/></svg></span>
         <div class="phil-title">EU Discipline, Asia Proximity</div>
         <div class="phil-desc">EU credentials. On-site across Asia. Both, not one.</div>
       </div>
@@ -1122,7 +1152,7 @@ footer {
     </div>
 
     <div class="svc-card reveal">
-      <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80')">
+      <div class="svc-img" style="background-image:url('coding-screenshot.jpg')">
         <div class="svc-img-title">Coding</div>
       </div>
       <div class="svc-body">
@@ -1172,17 +1202,20 @@ footer {
     <div class="outcome-grid">
       <div class="outcome-card">
         <div class="outcome-tag">Manufacturing · Electronics Assembly</div>
-        <div class="outcome-result">60% reduction in incoming inspection labor</div>
+        <div class="outcome-stat">60%</div>
+        <div class="outcome-result">reduction in incoming inspection labor</div>
         <div class="outcome-desc">Computer vision QC deployed on a single assembly line. 8-week pilot. Defect pass-through rate maintained; manual inspection headcount reallocated to higher-value tasks.</div>
       </div>
       <div class="outcome-card">
         <div class="outcome-tag">Software Team · B2B SaaS</div>
-        <div class="outcome-result">Team shipping AI features independently within 6 weeks</div>
-        <div class="outcome-desc">2-day agentic workflow workshop + 4-week implementation retainer. Team went from zero LLM integration experience to a production RAG system with full CI/CD.</div>
+        <div class="outcome-stat">6 weeks</div>
+        <div class="outcome-result">team shipping AI features independently</div>
+        <div class="outcome-desc">2-day agentic workflow workshop + 4-week implementation support. Team went from zero LLM integration experience to a production RAG system with full CI/CD.</div>
       </div>
       <div class="outcome-card">
         <div class="outcome-tag">Operations · Manufacturing SME</div>
-        <div class="outcome-result">12-page AI opportunity report in 3 days</div>
+        <div class="outcome-stat">3 days</div>
+        <div class="outcome-result">12-page AI opportunity report delivered</div>
         <div class="outcome-desc">Discovery Sprint at a 200-person factory. Report identified 4 viable AI use cases with cost-benefit estimates; client proceeded with predictive maintenance pilot as first priority.</div>
       </div>
     </div>
@@ -1209,7 +1242,7 @@ footer {
       <div class="cred-tag">Education</div>
       <div class="cred-title">MSc Artificial Intelligence — Universität zu Lübeck</div>
       <div class="cred-sub">Pursuing alongside AI Lab leadership.</div>
-      <div class="cred-year">March 2026 –</div>
+      <div class="cred-year">March 2026 – Expected 2028</div>
     </div>
     <div class="cred-card">
       <div class="cred-tag">Research</div>
@@ -1248,7 +1281,7 @@ footer {
       <div class="p-name">AI for Manufacturing</div>
       <div class="p-price">From €25,000</div>
       <div class="p-period">6–12 week pilot · on-site visits included</div>
-      <div class="p-desc">One production-ready model on a single line or machine. Predictive maintenance, quality control, or Industry 4.0 readiness. Day rate from €1,500 · Retainer from €5,000/month.</div>
+      <div class="p-desc">One production-ready model on a single line or machine. Predictive maintenance, quality control, or Industry 4.0 readiness — deployed on your floor, owned by your team.</div>
       <div class="p-process">
         <div class="p-process-label">How it works</div>
         <div class="p-process-step">Free 20-min call → scoped Manufacturing pilot</div>
@@ -1269,7 +1302,7 @@ footer {
       <div class="p-name">AI Discovery Sprint</div>
       <div class="p-price">€4,500</div>
       <div class="p-period">3 days · fixed scope</div>
-      <div class="p-desc">The first paid step. I diagnose where AI creates real value in your operation and deliver a 12-page opportunity report + executive presentation. Fee credited toward any follow-on engagement within 90 days.</div>
+      <div class="p-desc">I diagnose where AI creates real value in your operation and deliver a 12-page opportunity report + executive presentation. Fee credited toward any follow-on engagement within 90 days.</div>
       <div class="p-process">
         <div class="p-process-label">How it works</div>
         <div class="p-process-step">Free 20-min call → confirm fit</div>
@@ -1289,7 +1322,7 @@ footer {
       <div class="p-name">Workshops &amp; Retainers</div>
       <div class="p-price">From €3,500</div>
       <div class="p-period">1–2 day workshop · on-site</div>
-      <div class="p-desc">Hands-on workshops for dev teams (Claude Code, agentic workflows) or operations teams (workflow automation). Coding day rate from €1,000 · Productivity day rate from €800 · Retainers from €2,500/month.</div>
+      <div class="p-desc">Hands-on workshops for dev teams (Claude Code, agentic workflows) or operations teams (workflow automation). Coding day rate from €1,000 · Productivity day rate from €800.</div>
       <div class="p-process">
         <div class="p-process-label">How it works</div>
         <div class="p-process-step">Free 20-min call → scoped workshop</div>
@@ -1306,7 +1339,7 @@ footer {
     </div>
 
   </div>
-  <p class="p-note">Quarterly retainers from €12,000 (3 months, 4 hrs/week + 2 on-site visits). Day rates and custom scopes on request. Travel beyond standard on-site visits billed at cost.</p>
+  <p class="p-note">Day rates and custom scopes on request. Travel beyond standard on-site visits billed at cost.</p>
 </section>
 
 <!-- FAQ -->
@@ -1331,6 +1364,33 @@ footer {
         Most AI tool deployments fail because they're imposed on a team without building understanding. Every engagement here is built around transferring the thinking, not just the tool. Your team will understand why the system works — and be able to fix it, extend it, or replace it. That's what "skills, not dependencies" means in practice.
       </div>
     </details>
+    <details>
+      <summary>
+        What industries do you work with beyond manufacturing?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Manufacturing is the primary focus, but the same approach — fixed-price pilots, capability transfer — applies to logistics, agri-tech, and industrial services. If your business has repetitive physical processes or quality control challenges, it's worth a conversation.
+      </div>
+    </details>
+    <details>
+      <summary>
+        What countries in Asia do you cover? Do you work with large enterprises or SMEs?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Currently covering Southeast Asia with regular presence in Vietnam, Thailand, and Indonesia. Both enterprise divisions and mid-sized manufacturers are in scope; the fixed-price model works at either scale.
+      </div>
+    </details>
+    <details>
+      <summary>
+        What happens if the pilot doesn't deliver results?
+        <span class="faq-icon">+</span>
+      </summary>
+      <div class="faq-body">
+        Every engagement is scoped to a specific, measurable outcome before we start. If the agreed metric isn't hit, we extend the engagement at no extra cost until it is. The fixed price means the risk is mine, not yours.
+      </div>
+    </details>
   </div>
 </section>
 <hr class="div">
@@ -1341,13 +1401,13 @@ footer {
     <div class="reveal">
       <div class="eyebrow">Contact</div>
       <h2 class="h2">READY TO START?<br>LET'S TALK.</h2>
-      <p class="sub">I reply within 24 hours. Based in Asia — Mon–Fri. On-site visits across the region.</p>
+      <p class="sub">I reply within 24 hours, Monday through Friday.</p>
       <div class="c-channels">
-        <a href="mailto:venceslav.ch@outlook.com" class="c-row">
+        <a href="mailto:venceslav.chumchal@gmail.com" class="c-row">
           <div class="c-icon">✉</div>
           <div>
             <div class="c-label">Email</div>
-            <div class="c-val">venceslav.ch@outlook.com</div>
+            <div class="c-val">venceslav.chumchal@gmail.com</div>
           </div>
         </a>
         <a href="https://wa.me/420777124827" target="_blank" class="c-row">
@@ -1370,7 +1430,7 @@ footer {
       <div class="c-card-head">NOT SURE WHERE<br>TO START?<br>THE FIRST CALL IS FREE.</div>
       <div class="c-card-body">A free 20-minute call to discuss your situation. If we're a fit, the typical next step is the €4,500 AI Discovery Sprint — fixed scope, 3 days, written report you keep regardless of what comes next. The fee is credited toward any follow-on engagement within 90 days.</div>
       <a href="https://calendarbridge.com/book/venceslav-chumchal/consultancy" target="_blank" class="btn-primary">Book Discovery Call →</a>
-      <div class="c-tz">Based in Asia · Mon–Fri · On-site visits across the region</div>
+      <div class="c-tz">Based in Southeast Asia (GMT+7/8) · Mon–Fri · On-site visits across the region</div>
     </div>
   </div>
 </section>
@@ -1381,7 +1441,7 @@ footer {
   <div class="ft-links">
     <a href="https://www.linkedin.com/in/venceslav-chumchal/" target="_blank">LinkedIn</a>
     <a href="https://arxiv.org/abs/2501.03377" target="_blank">Research</a>
-    <a href="mailto:venceslav.ch@outlook.com">Email</a>
+    <a href="mailto:venceslav.chumchal@gmail.com">Email</a>
     <a href="https://wa.me/420777124827" target="_blank">WhatsApp</a>
   </div>
 </footer>
