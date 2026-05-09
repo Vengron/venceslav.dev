@@ -59,12 +59,11 @@ Add 3 new FAQ items below the existing 2. Answers to be written inline during im
 A: Focus is on manufacturing, but the same approach — fixed-price pilots, capability transfer — applies to logistics, agri-tech, and industrial services. If your business has repetitive physical processes or quality control challenges, it's worth a conversation.
 
 **Q: What countries in Asia do you cover for on-site visits? Do you work with large enterprises or SMEs?**  
-A: Currently covering Southeast Asia with regular presence in [countries TBD — Venceslav to fill]. Both enterprise divisions and mid-sized manufacturers are in scope; the fixed-price model works at either scale.
+A: Currently covering Southeast Asia with regular presence in Vietnam, Thailand and Indonesia. Both enterprise divisions and mid-sized manufacturers are in scope; the fixed-price model works at either scale.
 
 **Q: What happens if the pilot doesn't deliver results?**  
 A: Every engagement is scoped to a specific, measurable outcome before we start. If the agreed metric isn't hit, we extend the engagement at no extra cost until it is. The fixed price means the risk is mine, not yours.
 
-> **Note:** Venceslav should review and rewrite the FAQ answers in his own voice before shipping.
 
 Remove excess whitespace above/below the FAQ section (reduce `padding-block` by ~30%).
 
